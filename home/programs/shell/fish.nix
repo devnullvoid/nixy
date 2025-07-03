@@ -3,7 +3,30 @@
 let fetch = config.theme.fetch; # neofetch, nerdfetch, pfetch
 in {
 
-  home.packages = with pkgs; [ bat ripgrep tldr sesh rmtrash trash-cli ];
+  home.packages = with pkgs; [ 
+    # Core shell tools
+    bat ripgrep tldr sesh rmtrash trash-cli
+    
+    # Additional useful CLI tools from devnullvoid-nix
+    any-nix-shell # for fish integration
+    fd # modern find replacement
+    jq # JSON processor
+    yq-go # YAML processor
+    glow # markdown previewer
+    nix-output-monitor # better nix output with nom command
+    
+    # File management
+    nnn # terminal file manager (alternative to yazi)
+    
+    # Archives
+    zip unzip p7zip xz
+    
+    # System monitoring
+    btop iotop iftop
+    
+    # Network tools
+    mtr traceroute dnsutils
+  ];
 
   home.sessionPath = [ "$HOME/go/bin" ];
 
@@ -13,6 +36,9 @@ in {
     interactiveShellInit = ''
       # Set fish greeting
       set fish_greeting
+      
+      # any-nix-shell integration for better nix-shell experience
+      ${pkgs.any-nix-shell}/bin/any-nix-shell fish --info-right | source
       
       # Run fetch program
       ${if fetch == "neofetch" then
