@@ -35,6 +35,8 @@
       inputs.hyprland.follows = "hyprland";
     };
     search-nixos-api.url = "github:anotherhadi/search-nixos-api";
+    nix-index-database.url = "github:nix-community/nix-index-database";
+    nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = inputs @ {nixpkgs, ...}: {
