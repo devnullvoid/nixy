@@ -72,8 +72,8 @@ in {
     udisks2.enable = true;
   };
 
-  # enable zsh autocompletion for system packages (systemd, etc)
-  environment.pathsToLink = [ "/share/zsh" ];
+  # enable fish autocompletion for system packages (systemd, etc)
+  environment.pathsToLink = [ "/share/fish" ];
 
   # Faster rebuilding
   documentation = {

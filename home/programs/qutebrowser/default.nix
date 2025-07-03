@@ -12,7 +12,7 @@ let
       "config": {
         "title" : "Welcome Home",
         "openLinksInNewTab": false,
-        "locale": "fr-FR",
+        "locale": "en-US",
         "colors": {
           "primary": "${accent}",
           "background": "${background}",

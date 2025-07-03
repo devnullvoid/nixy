@@ -28,7 +28,7 @@ in {
   programs.tmux = {
     enable = true;
     mouse = true;
-    shell = "${pkgs.zsh}/bin/zsh";
+    shell = "${pkgs.fish}/bin/fish";
     prefix = "C-s";
     terminal = "kitty";
     keyMode = "vi";
