@@ -39,6 +39,19 @@
 
   outputs = inputs @ {nixpkgs, ...}: {
     nixosConfigurations = {
+      procyon =
+        nixpkgs.lib.nixosSystem {
+          modules = [
+            {
+              nixpkgs.overlays = [inputs.hyprpanel.overlay];
+              _module.args = {inherit inputs;};
+            }
+            inputs.nixos-hardware.nixosModules.dell-latitude-5520 # CHANGEME: check https://github.com/NixOS/nixos-hardware
+            inputs.home-manager.nixosModules.home-manager
+            inputs.stylix.nixosModules.stylix
+            ./hosts/procyon/configuration.nix # CHANGEME: change the path to match your host folder
+          ];
+        };
       nixy =
         # CHANGEME: This should match the 'hostname' in your variables.nix file
         nixpkgs.lib.nixosSystem {
