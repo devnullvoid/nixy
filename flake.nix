@@ -80,6 +80,18 @@
           ./hosts/server/configuration.nix
         ];
       };
+      # Lean VM configuration for testing
+      nixvm = nixpkgs.lib.nixosSystem {
+        modules = [
+          {
+            nixpkgs.overlays = [inputs.hyprpanel.overlay];
+            _module.args = {inherit inputs;};
+          }
+          inputs.home-manager.nixosModules.home-manager
+          inputs.stylix.nixosModules.stylix
+          ./hosts/nixvm/configuration.nix
+        ];
+      };
     };
   };
 }
