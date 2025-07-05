@@ -14,12 +14,14 @@
     ../../nixos/tailscale.nix
     ../../nixos/hyprland.nix
     ../../nixos/nix-ld.nix
+    ../../nixos/ssh.nix
 
     # ../../nixos/omen.nix # For my laptop only
 
     # You should let those lines as is
     ./hardware-configuration.nix
     ./variables.nix
+    ./networking.nix
   ];
 
   home-manager.users."${config.var.username}" = import ./home.nix;

@@ -18,11 +18,13 @@
     ../../home/programs/fetch
     ../../home/programs/git
     ../../home/programs/git/signing.nix
+    ../../home/programs/gpg
     ../../home/programs/spicetify
     ../../home/programs/nextcloud
     ../../home/programs/thunar
     ../../home/programs/lazygit
     ../../home/programs/zen
+    ../../home/programs/qutebrowser
     ../../home/programs/duckduckgo-colorscheme
     ../../home/programs/discord
     ../../home/programs/tailscale
