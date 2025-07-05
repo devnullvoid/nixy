@@ -1,6 +1,7 @@
 { pkgs, config, ... }: {
   imports = [
     # Mostly user-specific configuration
+    inputs.nix-index-database.hmModules.nix-index
     ./variables.nix
 
     # Essential programs only
@@ -31,8 +32,8 @@
     # ../../home/programs/qutebrowser  # Additional browser not needed
     # ../../home/programs/tailscale    # VPN not needed
     # ../../home/programs/gpg          # GPG not needed for testing
-    # ../../home/system/sddm           # Display manager theming
-    # ../../home/system/stylix         # Theming
+    ../../home/system/sddm           # Display manager theming
+    ../../home/system/stylix         # Theming
   ];
 
   home = {
