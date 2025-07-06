@@ -71,8 +71,8 @@
     initrd.compressor = "gzip";
     initrd.compressorArgs = [ "-1" ]; # Fastest compression
     
-    # Reduce kernel log level
-    consoleLogLevel = 3;
+    # Reduce kernel log level (override systemd-boot.nix)
+    consoleLogLevel = lib.mkForce 3;
   };
 
   # Optimize filesystem for VMs
