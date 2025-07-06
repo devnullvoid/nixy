@@ -6,7 +6,7 @@
 
     # Essential programs only
     ../../home/programs/nvf          # Neovim
-    ../../home/programs/shell        # Shell tools
+    ./fish-minimal.nix               # Minimal shell config (VM-safe)
     ../../home/programs/git          # Git
     ../../home/programs/kitty        # Terminal
     ../../home/programs/fetch        # System info

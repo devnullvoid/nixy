@@ -85,6 +85,38 @@ If the system freezes on "restoring journal":
 
 3. **Check disk space**: Journal issues often indicate full disk
 
+### Shell/Login Issues
+If you can't log in or get shell errors:
+
+1. **Boot into single-user mode**:
+   - At GRUB menu, press `e` to edit
+   - Add `init=/bin/bash` to kernel line
+   - Boot with `Ctrl+X`
+
+2. **In single-user mode** (only `sh` is available):
+   ```bash
+   # Make filesystem writable
+   mount -o remount,rw /
+   
+   # Navigate to config directory
+   cd /home/jon/Dev/nixy
+   
+   # Use full path to nixos-rebuild
+   /run/current-system/sw/bin/nixos-rebuild switch --flake .#nixvm
+   
+   # Or if that doesn't work, build manually
+   nix build .#nixosConfigurations.nixvm.config.system.build.toplevel
+   ./result/bin/switch-to-configuration switch
+   ```
+
+3. **Temporary shell fix**:
+   ```bash
+   # Edit /etc/passwd to change shell from fish to bash temporarily
+   vi /etc/passwd
+   # Change: jon:x:1000:1000:jon account:/home/jon:/run/current-system/sw/bin/fish
+   # To:     jon:x:1000:1000:jon account:/home/jon:/bin/bash
+   ```
+
 ### Memory Issues
 The configuration includes several memory optimizations:
 - 4GB swap file

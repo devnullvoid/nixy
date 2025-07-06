@@ -6,14 +6,13 @@
   boot = {
     bootspec.enable = true;
     loader = {
-      grub = {
-        enable = true;
-        device = "/dev/vda"; # Adjust based on your VM's disk device
-        useOSProber = true;
-        configurationLimit = 8;
-        # Enable GRUB theme for a nicer boot experience
-        # theme = pkgs.nixos-grub2-theme;
-      };
+              grub = {
+          enable = true;
+          device = "/dev/vda"; # Adjust based on your VM's disk device
+          useOSProber = true;
+          configurationLimit = 8;
+          # Theme is automatically handled by Stylix
+        };
       # Disable systemd-boot since we're using GRUB
       systemd-boot.enable = lib.mkForce false;
       efi.canTouchEfiVariables = lib.mkForce false;
