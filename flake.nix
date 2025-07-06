@@ -124,6 +124,19 @@
           ./hosts/nixvm/debug-step2.nix
         ];
       };
+      
+      # Debug step 3: Add essential programs
+      nixvm-step3 = nixpkgs.lib.nixosSystem {
+        modules = [
+          {
+            nixpkgs.overlays = [inputs.hyprpanel.overlay];
+            _module.args = {inherit inputs;};
+          }
+          inputs.nix-index-database.hmModules.nix-index
+          inputs.home-manager.nixosModules.home-manager
+          ./hosts/nixvm/debug-step3.nix
+        ];
+      };
     };
   };
 }
