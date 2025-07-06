@@ -1,4 +1,4 @@
-{ pkgs, config, ... }: {
+{ pkgs, config, inputs, ... }: {
   imports = [
     # Mostly user-specific configuration
     inputs.nix-index-database.hmModules.nix-index
@@ -32,8 +32,8 @@
     # ../../home/programs/qutebrowser  # Additional browser not needed
     # ../../home/programs/tailscale    # VPN not needed
     # ../../home/programs/gpg          # GPG not needed for testing
-    ../../home/system/sddm           # Display manager theming
-    ../../home/system/stylix         # Theming
+    # ../../home/system/sddm           # Display manager theming
+    # ../../home/system/stylix         # Theming
   ];
 
   home = {
@@ -57,7 +57,7 @@
       unzip
       
       # Minimal media
-      mpv                           # Video player
+      # mpv                           # Video player
       
       # Basic file manager
       xfce.thunar
@@ -70,7 +70,7 @@
     # file.".face.icon" = {source = ./profile_picture.png;};
 
     # Don't touch this
-    stateVersion = "24.05";
+    stateVersion = "25.05";
   };
 
   programs.home-manager.enable = true;
