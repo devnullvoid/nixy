@@ -5,7 +5,7 @@
     ../../nixos/fonts.nix
     ../../nixos/home-manager.nix
     ../../nixos/nix.nix
-    ../../nixos/systemd-boot.nix
+    ./bootloader.nix  # VM-specific bootloader (GRUB for MBR)
     ../../nixos/users.nix
     ../../nixos/utils.nix
     ../../nixos/hyprland.nix

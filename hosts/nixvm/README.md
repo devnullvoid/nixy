@@ -20,6 +20,7 @@ This is a lean NixOS configuration designed for VM testing, based on the `procyo
 - Cloud sync (Nextcloud)
 - Advanced theming (SDDM, Stylix)
 - Performance-heavy Hyprland effects (blur, shadows)
+- systemd-boot (replaced with GRUB for MBR compatibility)
 
 ### Included:
 - Essential Hyprland desktop environment
@@ -100,9 +101,10 @@ The configuration includes several memory optimizations:
 ## VM Setup Notes
 
 1. **Hardware Configuration**: The `hardware-configuration.nix` is generic and may need adjustment based on your VM setup
-2. **Disk Layout**: Assumes `/dev/sda1` for root and `/dev/sda2` for boot - adjust as needed
-3. **VM Guest Tools**: Includes QEMU guest tools and SPICE support for better VM integration
-4. **Performance**: Optimized for VM environments with reduced visual effects
+2. **Disk Layout**: Assumes single partition `/dev/sda1` with label `nixos` for root filesystem (MBR partitioning)
+3. **Bootloader**: Uses GRUB for MBR partitioning instead of systemd-boot (UEFI/GPT)
+4. **VM Guest Tools**: Includes QEMU guest tools and SPICE support for better VM integration
+5. **Performance**: Optimized for VM environments with reduced visual effects
 
 ## Customization
 
