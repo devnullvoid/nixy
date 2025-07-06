@@ -17,23 +17,18 @@
   boot.kernelModules = [ "kvm-intel" "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
-  # Generic filesystem configuration - adjust as needed
+  # Generic filesystem configuration for MBR partitioning
   fileSystems."/" = {
-    device = "/dev/disk/by-label/NIXROOT";  # Adjust based on your VM setup
+    device = "/dev/disk/by-label/nixos";  # Standard NixOS root partition
     fsType = "ext4";
+    options = [ "noatime" "nodiratime" ];  # Performance optimizations
   };
 
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-label/NIXBOOT";  # Adjust based on your VM setup  
-    fsType = "vfat";
-    options = [ "fmask=0022" "dmask=0022" ];
-  };
-
-  # Add swap to prevent OOM during builds
-  swapDevices = [{
-    device = "/swapfile";
-    size = 4096; # 4GB swap - increase if you have more disk space
-  }];
+  # For MBR systems, /boot is typically just a directory on the root filesystem
+  # No separate /boot partition needed unless specifically configured
+  
+  # Swap is configured in vm-optimizations.nix to avoid duplicates
+  swapDevices = [ ];
 
   # Enable DHCP on all interfaces (typical for VMs)
   networking.useDHCP = lib.mkDefault true;
