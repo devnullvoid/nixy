@@ -12,7 +12,7 @@
         useOSProber = true;
         configurationLimit = 8;
         # Enable GRUB theme for a nicer boot experience
-        theme = pkgs.nixos-grub2-theme;
+        # theme = pkgs.nixos-grub2-theme;
       };
       # Disable systemd-boot since we're using GRUB
       systemd-boot.enable = lib.mkForce false;
