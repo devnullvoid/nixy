@@ -22,7 +22,7 @@ in {
       # Set initial password for easy VM access
       initialPassword = "jon";
       # Use bash as default shell for stability
-      shell = pkgs.zsh;
+      shell = pkgs.fish;
     };
   };
 }

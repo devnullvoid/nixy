@@ -92,6 +92,16 @@
           ./hosts/nixvm/configuration.nix
         ];
       };
+      
+      # Debug minimal configuration
+      nixvm-debug = nixpkgs.lib.nixosSystem {
+        modules = [
+          {
+            _module.args = {inherit inputs;};
+          }
+          ./hosts/nixvm/debug-minimal.nix
+        ];
+      };
     };
   };
 }
