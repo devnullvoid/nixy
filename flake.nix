@@ -132,7 +132,6 @@
             nixpkgs.overlays = [inputs.hyprpanel.overlay];
             _module.args = {inherit inputs;};
           }
-          inputs.nix-index-database.hmModules.nix-index
           inputs.home-manager.nixosModules.home-manager
           ./hosts/nixvm/debug-step3.nix
         ];

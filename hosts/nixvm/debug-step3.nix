@@ -19,28 +19,25 @@
       hostname = "nixvm-debug-step3";
       username = "jon";
       autoGarbageCollector = false;
+      git = {
+        username = "Jon Rogers";
+        email = "67245+devnullvoid@users.noreply.github.com";
+      };
     };
 
-    # Home-manager configuration with essential programs
+    # Home-manager configuration with basic packages only
     home-manager.users.jon = {
-      imports = [
-        # Add back essential programs one by one
-        ../../home/programs/nvf          # Neovim
-        ../../home/programs/git          # Git
-        ../../home/programs/kitty        # Terminal
-        ../../home/programs/fetch        # System info
-      ];
-      
       home = {
         username = "jon";
         homeDirectory = "/home/jon";
         stateVersion = "25.05";
         
-        # Add basic packages
+        # Add basic packages (no complex program configs)
         packages = with pkgs; [
           firefox
           git
-          vim
+          neovim
+          kitty
           curl
           wget
           htop
@@ -49,6 +46,9 @@
           unzip
         ];
       };
+      
+      # Enable XDG directories
+      xdg.enable = true;
       
       programs.home-manager.enable = true;
       
@@ -62,6 +62,13 @@
           vim = "nvim";
           vi = "nvim";
         };
+      };
+      
+      # Basic git config without complex imports
+      programs.git = {
+        enable = true;
+        userName = "Jon Rogers";
+        userEmail = "67245+devnullvoid@users.noreply.github.com";
       };
     };
 
