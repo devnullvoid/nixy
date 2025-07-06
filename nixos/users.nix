@@ -3,7 +3,7 @@ let username = config.var.username;
 in {
   # Enable shells system-wide
   programs.fish.enable = true;
-  programs.bash.enable = true;
+  # programs.bash.enable = true;
   
   # Ensure shells are available in system packages
   environment.systemPackages = with pkgs; [
