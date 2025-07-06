@@ -102,6 +102,17 @@
           ./hosts/nixvm/debug-minimal.nix
         ];
       };
+      
+      # Debug step 1: Add home-manager
+      nixvm-step1 = nixpkgs.lib.nixosSystem {
+        modules = [
+          {
+            _module.args = {inherit inputs;};
+          }
+          inputs.home-manager.nixosModules.home-manager
+          ./hosts/nixvm/debug-step1.nix
+        ];
+      };
     };
   };
 }
