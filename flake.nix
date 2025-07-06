@@ -113,6 +113,17 @@
           ./hosts/nixvm/debug-step1.nix
         ];
       };
+      
+      # Debug step 2: Add shell configuration
+      nixvm-step2 = nixpkgs.lib.nixosSystem {
+        modules = [
+          {
+            _module.args = {inherit inputs;};
+          }
+          inputs.home-manager.nixosModules.home-manager
+          ./hosts/nixvm/debug-step2.nix
+        ];
+      };
     };
   };
 }
