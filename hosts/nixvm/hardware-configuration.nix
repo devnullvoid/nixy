@@ -29,7 +29,11 @@
     options = [ "fmask=0022" "dmask=0022" ];
   };
 
-  swapDevices = [ ];
+  # Add swap to prevent OOM during builds
+  swapDevices = [{
+    device = "/swapfile";
+    size = 4096; # 4GB swap - increase if you have more disk space
+  }];
 
   # Enable DHCP on all interfaces (typical for VMs)
   networking.useDHCP = lib.mkDefault true;

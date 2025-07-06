@@ -1,7 +1,7 @@
 { config, ... }: {
   imports = [
     # Basic system configuration
-    ../../nixos/audio.nix
+    # ../../nixos/audio.nix
     ../../nixos/fonts.nix
     ../../nixos/home-manager.nix
     ../../nixos/nix.nix
@@ -15,6 +15,9 @@
     # ../../nixos/tailscale.nix  # Skip for lean VM
     # ../../nixos/nix-ld.nix     # Skip for lean VM
     ../../nixos/ssh.nix        # Skip for lean VM
+
+    # VM optimizations
+    ./vm-optimizations.nix
 
     # You should let those lines as is
     ./hardware-configuration.nix
