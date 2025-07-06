@@ -35,8 +35,8 @@
       MaxRetentionSec = "1week";
     };
     
-    # Prevent NetworkManager from hanging during boot
-    NetworkManager-wait-online.enable = false;
+    # Prevent NetworkManager from hanging during boot (override utils.nix)
+    NetworkManager-wait-online.enable = lib.mkForce false;
   };
 
   # Optimize boot parameters for VMs
@@ -105,14 +105,14 @@
     "vm.overcommit_memory" = 1;
   };
 
-  # Disable unnecessary services for VMs
+  # Disable unnecessary services for VMs (override utils.nix)
   services = {
     # Disable power management (not needed in VMs)
-    power-profiles-daemon.enable = false;
-    upower.enable = false;
+    power-profiles-daemon.enable = lib.mkForce false;
+    upower.enable = lib.mkForce false;
     
     # Disable bluetooth (not available in VMs)
-    blueman.enable = false;
+    blueman.enable = lib.mkForce false;
     
     # Optimize systemd-resolved
     resolved = {
@@ -128,13 +128,13 @@
   # Optimize for single-user VM
   security.polkit.enable = lib.mkDefault false;
   
-  # Disable unnecessary documentation
+  # Disable unnecessary documentation for VMs (override utils.nix)
   documentation = {
-    enable = false;
-    nixos.enable = false;
-    man.enable = false;
-    info.enable = false;
-    doc.enable = false;
+    enable = lib.mkForce false;
+    nixos.enable = lib.mkForce false;
+    man.enable = lib.mkForce false;
+    info.enable = lib.mkForce false;
+    doc.enable = lib.mkForce false;
   };
 
   # Reduce environment packages
