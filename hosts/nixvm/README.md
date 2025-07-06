@@ -31,6 +31,15 @@ This is a lean NixOS configuration designed for VM testing, based on the `procyo
 
 ## Building
 
+### Safe Build Method (Recommended)
+```bash
+# Use the provided build script for safer builds
+./hosts/nixvm/build-vm.sh build    # Build without switching (safe)
+./hosts/nixvm/build-vm.sh switch   # Build and switch
+./hosts/nixvm/build-vm.sh check    # Check system resources
+```
+
+### Manual Build Method
 ```bash
 # Build the VM configuration
 sudo nixos-rebuild switch --flake .#nixvm
@@ -38,6 +47,55 @@ sudo nixos-rebuild switch --flake .#nixvm
 # Or build without switching (for testing)
 nixos-rebuild build --flake .#nixvm
 ```
+
+## Troubleshooting Build Issues
+
+### System Freezes During Build
+If your system freezes during builds, try these solutions:
+
+1. **Use the safe build script**: `./hosts/nixvm/build-vm.sh build`
+2. **Increase VM resources**:
+   - RAM: Minimum 2GB, recommended 4GB+
+   - Disk: Minimum 20GB, recommended 40GB+
+   - CPU: 2+ cores recommended
+
+3. **Check available resources**:
+   ```bash
+   # Check memory
+   free -h
+   # Check disk space
+   df -h
+   # Check swap
+   swapon --show
+   ```
+
+### Journal Restoration Issues
+If the system freezes on "restoring journal":
+
+1. **Boot from a previous generation**:
+   - Select older generation in GRUB/systemd-boot
+   - Or restore from VM snapshot
+
+2. **Clear journal manually**:
+   ```bash
+   sudo journalctl --vacuum-time=1d
+   sudo systemctl restart systemd-journald
+   ```
+
+3. **Check disk space**: Journal issues often indicate full disk
+
+### Memory Issues
+The configuration includes several memory optimizations:
+- 4GB swap file
+- Limited parallel builds (`max-jobs = 1`)
+- Reduced journal size
+- Memory pressure optimizations
+
+### Build Performance Tips
+- Close unnecessary applications before building
+- Use `build` first, then `switch` if successful
+- Monitor resources with `htop` during builds
+- Consider building on host system and copying result
 
 ## VM Setup Notes
 

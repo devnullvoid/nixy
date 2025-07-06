@@ -14,7 +14,7 @@
     configDirectory =
       "/home/"
       + config.var.username
-      + "/.config/nixos"; # The path of the nixos configuration directory
+      + "/Dev/nixy"; # The path of the nixos configuration directory
 
     keyboardLayout = "us";
 
