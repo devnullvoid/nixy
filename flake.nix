@@ -160,6 +160,56 @@
           ./hosts/nixvm/debug-step4b.nix
         ];
       };
+      
+      # Debug step 4c: Variables without theme (no Stylix)
+      nixvm-step4c = nixpkgs.lib.nixosSystem {
+        modules = [
+          {
+            nixpkgs.overlays = [inputs.hyprpanel.overlay];
+            _module.args = {inherit inputs;};
+          }
+          inputs.home-manager.nixosModules.home-manager
+          ./hosts/nixvm/debug-step4c.nix
+        ];
+      };
+      
+      # Debug step 4d: Pass variables to home-manager context
+      nixvm-step4d = nixpkgs.lib.nixosSystem {
+        modules = [
+          {
+            nixpkgs.overlays = [inputs.hyprpanel.overlay];
+            _module.args = {inherit inputs;};
+          }
+          inputs.home-manager.nixosModules.home-manager
+          ./hosts/nixvm/debug-step4d.nix
+        ];
+      };
+      
+      # Debug step 5: Add Stylix support for full theme configuration
+      nixvm-step5 = nixpkgs.lib.nixosSystem {
+        modules = [
+          {
+            nixpkgs.overlays = [inputs.hyprpanel.overlay];
+            _module.args = {inherit inputs;};
+          }
+          inputs.home-manager.nixosModules.home-manager
+          inputs.stylix.nixosModules.stylix
+          ./hosts/nixvm/debug-step5.nix
+        ];
+      };
+      
+      # Debug step 6: Import variables.nix in both contexts (like procyon)
+      nixvm-step6 = nixpkgs.lib.nixosSystem {
+        modules = [
+          {
+            nixpkgs.overlays = [inputs.hyprpanel.overlay];
+            _module.args = {inherit inputs;};
+          }
+          inputs.home-manager.nixosModules.home-manager
+          inputs.stylix.nixosModules.stylix
+          ./hosts/nixvm/debug-step6.nix
+        ];
+      };
     };
   };
 }
