@@ -362,6 +362,16 @@
           ./hosts/nixvm/configuration-hyprland-legacy.nix
         ];
       };
+      
+      # nixvm Hyprland using older nixpkgs-24.05 (pre-Aquamarine)
+      nixvm-hyprland-old = nixpkgs.lib.nixosSystem {
+        modules = [
+          {
+            _module.args = {inherit inputs;};
+          }
+          ./hosts/nixvm/configuration-hyprland-old.nix
+        ];
+      };
     };
   };
 }
