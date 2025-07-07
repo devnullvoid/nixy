@@ -392,6 +392,16 @@
           ./hosts/nixvm/configuration-hyprland-simple.nix
         ];
       };
+      
+      # nixvm Hyprland with no custom config (use defaults)
+      nixvm-hyprland-noconfig = nixpkgs.lib.nixosSystem {
+        modules = [
+          {
+            _module.args = {inherit inputs;};
+          }
+          ./hosts/nixvm/configuration-hyprland-noconfig.nix
+        ];
+      };
     };
   };
 }
