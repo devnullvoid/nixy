@@ -342,6 +342,16 @@
           ./hosts/nixvm/configuration-hyprland-fixed.nix
         ];
       };
+      
+      # nixvm Hyprland with forced software rendering
+      nixvm-hyprland-software = nixpkgs.lib.nixosSystem {
+        modules = [
+          {
+            _module.args = {inherit inputs;};
+          }
+          ./hosts/nixvm/configuration-hyprland-software.nix
+        ];
+      };
     };
   };
 }
