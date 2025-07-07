@@ -372,6 +372,16 @@
           ./hosts/nixvm/configuration-hyprland-old.nix
         ];
       };
+      
+      # nixvm Hyprland with headless backend fallback
+      nixvm-hyprland-headless = nixpkgs.lib.nixosSystem {
+        modules = [
+          {
+            _module.args = {inherit inputs;};
+          }
+          ./hosts/nixvm/configuration-hyprland-headless.nix
+        ];
+      };
     };
   };
 }
