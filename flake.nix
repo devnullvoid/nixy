@@ -274,6 +274,19 @@
           ./hosts/nixvm/configuration-vm-graphics.nix
         ];
       };
+      
+      # nixvm optimized for QEMU VirtIO-GPU with 3D acceleration
+      nixvm-virtio = nixpkgs.lib.nixosSystem {
+        modules = [
+          {
+            nixpkgs.overlays = [inputs.hyprpanel.overlay];
+            _module.args = {inherit inputs;};
+          }
+          inputs.home-manager.nixosModules.home-manager
+          inputs.stylix.nixosModules.stylix
+          ./hosts/nixvm/configuration-virtio.nix
+        ];
+      };
     };
   };
 }
