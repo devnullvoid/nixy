@@ -210,6 +210,32 @@
           ./hosts/nixvm/debug-step6.nix
         ];
       };
+      
+      # Debug step 7: Include essential system services
+      nixvm-step7 = nixpkgs.lib.nixosSystem {
+        modules = [
+          {
+            nixpkgs.overlays = [inputs.hyprpanel.overlay];
+            _module.args = {inherit inputs;};
+          }
+          inputs.home-manager.nixosModules.home-manager
+          inputs.stylix.nixosModules.stylix
+          ./hosts/nixvm/debug-step7.nix
+        ];
+      };
+      
+      # Fixed nixvm configuration
+      nixvm-fixed = nixpkgs.lib.nixosSystem {
+        modules = [
+          {
+            nixpkgs.overlays = [inputs.hyprpanel.overlay];
+            _module.args = {inherit inputs;};
+          }
+          inputs.home-manager.nixosModules.home-manager
+          inputs.stylix.nixosModules.stylix
+          ./hosts/nixvm/configuration-fixed.nix
+        ];
+      };
     };
   };
 }
