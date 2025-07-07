@@ -136,6 +136,30 @@
           ./hosts/nixvm/debug-step3.nix
         ];
       };
+      
+      # Debug step 4: Add complex program configurations
+      nixvm-step4 = nixpkgs.lib.nixosSystem {
+        modules = [
+          {
+            nixpkgs.overlays = [inputs.hyprpanel.overlay];
+            _module.args = {inherit inputs;};
+          }
+          inputs.home-manager.nixosModules.home-manager
+          ./hosts/nixvm/debug-step4.nix
+        ];
+      };
+      
+      # Debug step 4b: Add variables.nix support
+      nixvm-step4b = nixpkgs.lib.nixosSystem {
+        modules = [
+          {
+            nixpkgs.overlays = [inputs.hyprpanel.overlay];
+            _module.args = {inherit inputs;};
+          }
+          inputs.home-manager.nixosModules.home-manager
+          ./hosts/nixvm/debug-step4b.nix
+        ];
+      };
     };
   };
 }
