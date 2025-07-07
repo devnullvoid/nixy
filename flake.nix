@@ -382,6 +382,16 @@
           ./hosts/nixvm/configuration-hyprland-headless.nix
         ];
       };
+      
+      # nixvm simple Hyprland for manual testing
+      nixvm-hyprland-simple = nixpkgs.lib.nixosSystem {
+        modules = [
+          {
+            _module.args = {inherit inputs;};
+          }
+          ./hosts/nixvm/configuration-hyprland-simple.nix
+        ];
+      };
     };
   };
 }
