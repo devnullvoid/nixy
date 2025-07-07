@@ -80,9 +80,6 @@
       settings.PermitRootLogin = "yes";
     };
     
-    # Polkit (required for Hyprland)
-    polkit.enable = true;
-    
     # D-Bus (required for Wayland)
     dbus.enable = true;
     
