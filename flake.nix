@@ -402,6 +402,16 @@
           ./hosts/nixvm/configuration-hyprland-noconfig.nix
         ];
       };
+      
+      # nixvm Hyprland with EGL/OpenGL completely disabled
+      nixvm-hyprland-noegl = nixpkgs.lib.nixosSystem {
+        modules = [
+          {
+            _module.args = {inherit inputs;};
+          }
+          ./hosts/nixvm/configuration-hyprland-noegl.nix
+        ];
+      };
     };
   };
 }
