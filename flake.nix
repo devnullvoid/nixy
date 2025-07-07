@@ -287,6 +287,18 @@
           ./hosts/nixvm/configuration-virtio.nix
         ];
       };
+      
+      # nixvm X11 fallback for debugging display issues
+      nixvm-x11 = nixpkgs.lib.nixosSystem {
+        modules = [
+          {
+            _module.args = {inherit inputs;};
+          }
+          inputs.home-manager.nixosModules.home-manager
+          # Skip Stylix to avoid lightdm conflicts
+          ./hosts/nixvm/configuration-x11-fallback.nix
+        ];
+      };
     };
   };
 }
