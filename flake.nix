@@ -322,6 +322,26 @@
           ./hosts/nixvm/debug-wayland.nix
         ];
       };
+      
+      # nixvm minimal Hyprland configuration based on working Sway setup
+      nixvm-hyprland-minimal = nixpkgs.lib.nixosSystem {
+        modules = [
+          {
+            _module.args = {inherit inputs;};
+          }
+          ./hosts/nixvm/configuration-hyprland-minimal.nix
+        ];
+      };
+      
+      # nixvm Hyprland with Aquamarine backend fixes for VirtIO-GPU
+      nixvm-hyprland-fixed = nixpkgs.lib.nixosSystem {
+        modules = [
+          {
+            _module.args = {inherit inputs;};
+          }
+          ./hosts/nixvm/configuration-hyprland-fixed.nix
+        ];
+      };
     };
   };
 }
