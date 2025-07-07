@@ -261,6 +261,19 @@
           ./hosts/nixvm/configuration-gui-fixed.nix
         ];
       };
+      
+      # nixvm with VM-optimized graphics for Hyprland
+      nixvm-graphics = nixpkgs.lib.nixosSystem {
+        modules = [
+          {
+            nixpkgs.overlays = [inputs.hyprpanel.overlay];
+            _module.args = {inherit inputs;};
+          }
+          inputs.home-manager.nixosModules.home-manager
+          inputs.stylix.nixosModules.stylix
+          ./hosts/nixvm/configuration-vm-graphics.nix
+        ];
+      };
     };
   };
 }
