@@ -312,6 +312,16 @@
           ./hosts/nixvm/configuration-wayland-enhanced.nix
         ];
       };
+      
+      # nixvm minimal debug configuration for VirtIO-GPU Wayland issues
+      nixvm-debug-wayland = nixpkgs.lib.nixosSystem {
+        modules = [
+          {
+            _module.args = {inherit inputs;};
+          }
+          ./hosts/nixvm/debug-wayland.nix
+        ];
+      };
     };
   };
 }
