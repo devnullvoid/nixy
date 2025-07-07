@@ -299,6 +299,19 @@
           ./hosts/nixvm/configuration-x11-fallback.nix
         ];
       };
+      
+      # nixvm with enhanced VirtIO-GPU Wayland support for Hyprland
+      nixvm-wayland-enhanced = nixpkgs.lib.nixosSystem {
+        modules = [
+          {
+            nixpkgs.overlays = [inputs.hyprpanel.overlay];
+            _module.args = {inherit inputs;};
+          }
+          inputs.home-manager.nixosModules.home-manager
+          inputs.stylix.nixosModules.stylix
+          ./hosts/nixvm/configuration-wayland-enhanced.nix
+        ];
+      };
     };
   };
 }
