@@ -76,10 +76,28 @@
     wayland.enable = true;
   };
 
-  # SSH for debugging
-  services.openssh = {
-    enable = true;
-    settings.PermitRootLogin = "yes";
+  # Essential services
+  services = {
+    # SSH for debugging
+    openssh = {
+      enable = true;
+      settings.PermitRootLogin = "yes";
+    };
+    
+    # Polkit (required for Hyprland)
+    polkit.enable = true;
+    
+    # D-Bus (required for Wayland)
+    dbus.enable = true;
+    
+    # Udev (device management)
+    udev.enable = true;
+  };
+
+  # Security settings
+  security = {
+    polkit.enable = true;
+    sudo.enable = true;
   };
 
   # Minimal Hyprland config
