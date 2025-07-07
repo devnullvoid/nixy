@@ -352,6 +352,16 @@
           ./hosts/nixvm/configuration-hyprland-software.nix
         ];
       };
+      
+      # nixvm Hyprland using nixpkgs version (legacy wlroots, no Aquamarine)
+      nixvm-hyprland-legacy = nixpkgs.lib.nixosSystem {
+        modules = [
+          {
+            _module.args = {inherit inputs;};
+          }
+          ./hosts/nixvm/configuration-hyprland-legacy.nix
+        ];
+      };
     };
   };
 }
