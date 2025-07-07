@@ -236,6 +236,31 @@
           ./hosts/nixvm/configuration-fixed.nix
         ];
       };
+      
+      # Fast-building nixvm configuration (uses nixpkgs Hyprland)
+      nixvm-fast = nixpkgs.lib.nixosSystem {
+        modules = [
+          {
+            _module.args = {inherit inputs;};
+          }
+          inputs.home-manager.nixosModules.home-manager
+          inputs.stylix.nixosModules.stylix
+          ./hosts/nixvm/configuration-fast.nix
+        ];
+      };
+      
+      # nixvm with GUI login fix (SDDM)
+      nixvm-gui-fixed = nixpkgs.lib.nixosSystem {
+        modules = [
+          {
+            nixpkgs.overlays = [inputs.hyprpanel.overlay];
+            _module.args = {inherit inputs;};
+          }
+          inputs.home-manager.nixosModules.home-manager
+          inputs.stylix.nixosModules.stylix
+          ./hosts/nixvm/configuration-gui-fixed.nix
+        ];
+      };
     };
   };
 }
