@@ -1,8 +1,6 @@
 { config, ... }: {
   imports = [
-    # Full system configuration for flake testing
-    ../../nixos/audio.nix
-    ../../nixos/bluetooth.nix
+    # Essential system configuration for flake testing
     ../../nixos/fonts.nix
     ../../nixos/home-manager.nix
     ../../nixos/nix.nix
@@ -10,13 +8,17 @@
     ../../nixos/sddm.nix
     ../../nixos/users.nix
     ../../nixos/utils.nix
-    ../../nixos/tailscale.nix
     ./hyprland-nixpkgs.nix  # VM-specific Hyprland using nixpkgs
     ../../nixos/nix-ld.nix
     ../../nixos/ssh.nix
 
     # VM optimizations
     ./vm-optimizations.nix
+
+    # Removed unnecessary modules for VM:
+    # ../../nixos/audio.nix         # No audio needed in VM
+    # ../../nixos/bluetooth.nix     # No bluetooth in VM
+    # ../../nixos/tailscale.nix     # VPN not needed for testing
 
     # You should let those lines as is
     ./hardware-configuration.nix
