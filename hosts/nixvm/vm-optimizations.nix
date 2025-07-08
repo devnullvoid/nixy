@@ -125,8 +125,8 @@
   # Reduce font cache size
   fonts.fontconfig.cache32Bit = false;
 
-  # Optimize for single-user VM
-  security.polkit.enable = lib.mkDefault false;
+  # Optimize for single-user VM (but keep polkit for proper testing)
+  # security.polkit.enable = lib.mkDefault false;
   
   # Disable unnecessary documentation for VMs (override utils.nix)
   documentation = {

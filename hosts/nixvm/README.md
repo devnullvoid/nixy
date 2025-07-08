@@ -1,34 +1,35 @@
 # NixVM Host Configuration
 
-This is a lean NixOS configuration designed for VM testing, based on the `procyon` host but with minimal packages and optimizations for virtual machine environments.
+This is a comprehensive NixOS configuration designed for VM testing that matches the main flake configuration as closely as possible, but uses nixpkgs packages instead of building from source for faster builds.
 
 ## Purpose
 
 - **Testing**: Safe environment to test NixOS configurations without affecting main system
-- **Development**: Lightweight setup for configuration development and debugging
-- **VM Optimized**: Disabled heavy features like blur, shadows, and unnecessary services
+- **Development**: Full-featured setup for comprehensive configuration testing
+- **Flake Validation**: Ensures all flake features work correctly in a controlled environment
 
 ## Key Differences from Procyon
 
-### Disabled/Removed:
-- WiFi configuration (not needed in VM)
-- Bluetooth support
-- Tailscale VPN
-- nix-ld (VSCode server support)
-- SSH server
-- Heavy applications (Discord, Obsidian, etc.)
-- Cloud sync (Nextcloud)
-- Advanced theming (SDDM, Stylix)
-- Performance-heavy Hyprland effects (blur, shadows)
-- systemd-boot (replaced with GRUB for MBR compatibility)
+### Only Removed:
+- Heavy user applications: Discord, Zen Browser, Spicetify, Nextcloud, Obsidian, Figma
+- Hardware-specific configurations (laptop-specific keyboard backlight, etc.)
+- systemd-boot (replaced with GRUB for MBR compatibility in VMs)
 
-### Included:
-- Essential Hyprland desktop environment
-- Basic development tools (Git, Neovim, terminal)
-- Firefox browser
-- Basic file manager (Thunar)
-- System utilities (htop, tree, etc.)
-- Screenshot and notification scripts
+### Key Changes for VM Testing:
+- **Hyprland**: Uses nixpkgs version instead of building from source (much faster)
+- **All Core Features**: SDDM, Stylix, blur, shadows, animations all fully functional
+- **Complete Desktop**: Full Hyprland ecosystem for comprehensive testing
+
+### Included (Full Flake Testing):
+- Complete Hyprland desktop environment with all effects
+- SDDM display manager with theming
+- Stylix theming system
+- All system scripts and utilities
+- Development tools (Git, Neovim, Lazygit, etc.)
+- Essential applications (Firefox, Bitwarden, VLC, etc.)
+- File manager, PDF viewer, clipboard manager
+- Tailscale VPN, SSH, audio, bluetooth
+- All home-manager configurations
 
 ## Building
 

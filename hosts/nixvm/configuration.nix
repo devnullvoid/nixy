@@ -1,20 +1,19 @@
 { config, ... }: {
   imports = [
-    # Basic system configuration
-    # ../../nixos/audio.nix
+    # Full system configuration for flake testing
+    ../../nixos/audio.nix
+    ../../nixos/bluetooth.nix
     ../../nixos/fonts.nix
     ../../nixos/home-manager.nix
     ../../nixos/nix.nix
     ./bootloader.nix  # VM-specific bootloader (GRUB for MBR)
+    ../../nixos/sddm.nix
     ../../nixos/users.nix
     ../../nixos/utils.nix
-    ../../nixos/hyprland.nix
-    
-    # VM-specific: Skip hardware-specific modules
-    # ../../nixos/bluetooth.nix  # Not needed in VM
-    # ../../nixos/tailscale.nix  # Skip for lean VM
-    # ../../nixos/nix-ld.nix     # Skip for lean VM
-    ../../nixos/ssh.nix        # Skip for lean VM
+    ../../nixos/tailscale.nix
+    ./hyprland-nixpkgs.nix  # VM-specific Hyprland using nixpkgs
+    ../../nixos/nix-ld.nix
+    ../../nixos/ssh.nix
 
     # VM optimizations
     ./vm-optimizations.nix
