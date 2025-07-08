@@ -86,6 +86,8 @@
       pfetch
       btop
       fastfetch
+      colloid-icon-theme
+      adwaita-icon-theme
 
       # Just cool
       peaclock

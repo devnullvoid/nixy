@@ -40,6 +40,11 @@ in {
         }
 
         {
+          timeout = 300;  # 5 minutes - dim screen to 50%
+          on-timeout = "brightnessctl -s set 50%";
+          on-resume = "if ! pgrep -x hyprlock >/dev/null; then brightnessctl -r; fi";
+        }
+        {
           timeout = 900;  # 15 minutes - turn off screen
           on-timeout = "hyprctl dispatch dpms off";
           on-resume = "hyprctl dispatch dpms on";
