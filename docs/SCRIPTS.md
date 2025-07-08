@@ -75,6 +75,8 @@ OpenVPN allows you to connect/disconnect quickly to a openVPN server
 - `openvpn-down` turn down the vpn
 - `openvpn-toggle` toggle the vpn
 
+
+
 ## Screenshot
 
 This module provides a script to take screenshots using `grimblast` and `swappy`.
