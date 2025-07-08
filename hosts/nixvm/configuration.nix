@@ -1,4 +1,4 @@
-{ config, ... }: {
+{ config, pkgs, ... }: {
   imports = [
     # Essential system configuration for flake testing
     ../../nixos/fonts.nix
@@ -26,6 +26,13 @@
   ];
 
   home-manager.users."${config.var.username}" = import ./home.nix;
+
+  # Add essential packages that might be missing
+  environment.systemPackages = with pkgs; [
+    ripgrep  # Essential search tool
+    fzf      # Fuzzy finder
+    just     # Command runner for build scripts
+  ];
 
   # VM-specific optimizations
   # virtualisation.vmware.guest.enable = true; # Enable if using VMware

@@ -6,7 +6,7 @@
 
     # Essential programs for flake testing
     ../../home/programs/nvf          # Neovim (needed for config editing)
-    ../../home/programs/shell        # Shell config for testing
+    ../../home/programs/shell        # Shell config for testing (includes ripgrep)
     ../../home/programs/git          # Git (essential for flake work)
     ../../home/programs/git/signing.nix
     ../../home/programs/gpg          # GPG for git signing
@@ -64,6 +64,9 @@
       # Essential apps for flake testing only
       firefox                        # Web browser (lighter than zen)
       
+      # Essential development tools (minimal set)
+      just                           # Command runner (for build scripts)
+      
       # Minimal utilities
       zip
       unzip
@@ -83,7 +86,6 @@
       # bun                          # JS runtime
       # nodejs                       # Node.js
       # python3                      # Python
-      # just                         # Command runner
       # pnpm                         # Package manager
       # air                          # Go live reload
       # Heavy apps:
