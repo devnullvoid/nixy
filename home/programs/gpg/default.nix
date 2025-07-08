@@ -1,15 +1,15 @@
 # GPG agent configuration for SSH and signing
-{ pkgs, ... }: {
+{ pkgs, config, ... }: {
   programs.gpg = {
     enable = true;
-    homedir = "${builtins.getEnv "HOME"}/.gnupg";
+    homedir = "${config.home.homeDirectory}/.gnupg";
   };
 
   services.gpg-agent = {
     enable = true;
     enableSshSupport = true;
     enableFishIntegration = true;
-    pinentryPackage = pkgs.pinentry-gtk2;
+    pinentry.package = pkgs.pinentry-gtk2;
     defaultCacheTtl = 3600;
     defaultCacheTtlSsh = 3600;
     maxCacheTtl = 7200;

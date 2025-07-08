@@ -23,7 +23,15 @@ in {
   # };
 
   networking = {
-    networkmanager.enable = true;
+    networkmanager = {
+      enable = true;
+      wifi = {
+        backend = "wpa_supplicant";
+        powersave = false;
+      };
+    };
+    # Disable the global useDHCP flag as it's deprecated when using NetworkManager
+    useDHCP = false;
   };
 
   # Create NetworkManager connection file from SOPS secrets (temporarily disabled)
