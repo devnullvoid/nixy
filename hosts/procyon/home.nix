@@ -96,6 +96,10 @@
       # Backup
       brave
       vscode
+
+      zed-editor
+      code-cursor
+      windsurf
     ];
 
     # Import my profile picture, used by the hyprpanel dashboard

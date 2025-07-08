@@ -1,7 +1,7 @@
 # A duckduckgo colorscheme generated for the Stylix theme used.
 { config, ... }:
 let
-  accent = config.lib.stylix.colors.base0D;
+  accent = config.lib.stylix.colors.base0F;
   background = config.lib.stylix.colors.base00;
   foreground = config.lib.stylix.colors.base05;
   background-alt = config.lib.stylix.colors.base01;

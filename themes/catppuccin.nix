@@ -10,10 +10,10 @@
       rounding = 15;
       gaps-in = 8;
       gaps-out = 8 * 2;
-      active-opacity = 0.98;
-      inactive-opacity = 0.94;
+      active-opacity = 0.94;
+      inactive-opacity = 0.90;
       blur = true;
-      border-size = 3;
+      border-size = 2;
       animation-speed = "fast"; # "fast" | "medium" | "slow"
       fetch = "none"; # "nerdfetch" | "neofetch" | "pfetch" | "none"
       textColorOnWallpaper =

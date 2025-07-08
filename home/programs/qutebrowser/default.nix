@@ -2,7 +2,7 @@
 # My homepage is generated using https://github.com/anotherhadi/homepage
 { pkgs, config, ... }:
 let
-  accent = "#${config.lib.stylix.colors.base0D}";
+  accent = "#${config.lib.stylix.colors.base0F}";
   background = "#${config.lib.stylix.colors.base00}";
   foreground = "#${config.lib.stylix.colors.base05}";
   muted = "#${config.lib.stylix.colors.base03}";

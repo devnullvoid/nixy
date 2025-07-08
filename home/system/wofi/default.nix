@@ -1,7 +1,7 @@
 # Wofi is a launcher for Wayland, inspired by rofi.
 { config, pkgs, lib, ... }:
 let
-  accent = "#${config.lib.stylix.colors.base0D}";
+  accent = "#${config.lib.stylix.colors.base0F}";
   background = "#${config.lib.stylix.colors.base00}";
   background-alt = "#${config.lib.stylix.colors.base01}";
   foreground = "#${config.lib.stylix.colors.base05}";
