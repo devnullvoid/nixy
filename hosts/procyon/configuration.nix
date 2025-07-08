@@ -22,6 +22,7 @@
     ./hardware-configuration.nix
     ./variables.nix
     ./networking.nix
+    ./power-management.nix  # Power management configuration
   ];
 
   home-manager.users."${config.var.username}" = import ./home.nix;

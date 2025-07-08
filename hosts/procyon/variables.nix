@@ -2,7 +2,10 @@
   config,
   lib,
   ...
-}: {
+}:
+let
+  username = "jon";
+in {
   imports = [
     # Choose your theme here:
     ../../themes/catppuccin.nix
@@ -10,11 +13,8 @@
 
   config.var = {
     hostname = "procyon";
-    username = "jon";
-    configDirectory =
-      "/home/"
-      + config.var.username
-      + "/.config/nixos"; # The path of the nixos configuration directory
+    username = username;
+    configDirectory = "/home/${username}/.config/nixos"; # The path of the nixos configuration directory
 
     keyboardLayout = "us";
 

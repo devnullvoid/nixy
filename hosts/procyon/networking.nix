@@ -1,65 +1,79 @@
-{ config, pkgs, inputs, ... }: {
-  imports = [ inputs.sops-nix.nixosModules.sops ];
+{ config, pkgs, inputs, ... }:
+let
+  username = "jon";
+in {
+  # imports = [ inputs.sops-nix.nixosModules.sops ];
 
   # SOPS configuration for system-level secrets
-  sops = {
-    defaultSopsFile = ./secrets/secrets.yaml;
-    age.keyFile = "/home/${config.var.username}/.config/sops/age/keys.txt";
-    secrets = {
-      wifi-ssid = {
-        mode = "0600";
-        owner = "root";
-        group = "root";
-      };
-      wifi-psk = {
-        mode = "0600";
-        owner = "root";
-        group = "root";
-      };
-    };
-  };
+  # sops = {
+  #   defaultSopsFile = ./secrets/secrets.yaml;
+  #   age.keyFile = "/home/${username}/.config/sops/age/keys.txt";
+  #   secrets = {
+  #     wifi-ssid = {
+  #       mode = "0600";
+  #       owner = "root";
+  #       group = "root";
+  #     };
+  #     wifi-psk = {
+  #       mode = "0600";
+  #       owner = "root";
+  #       group = "root";
+  #     };
+  #   };
+  # };
 
   networking = {
-    networkmanager = {
-      enable = true;
-      # Use NetworkManager's declarative configuration with SOPS
-      ensureProfiles = {
-        environmentFiles = [ "/run/secrets/wifi-env" ];
-        profiles = {
-          "devnullvoid" = {
-            connection = {
-              id = "devnullvoid";
-              type = "wifi";
-              autoconnect = true;
-            };
-            wifi = {
-              ssid = "$WIFI_SSID";
-              mode = "infrastructure";
-            };
-            wifi-security = {
-              key-mgmt = "wpa-psk";
-              psk = "$WIFI_PSK";
-            };
-            ipv4 = {
-              method = "auto";
-            };
-            ipv6 = {
-              method = "auto";
-            };
-          };
-        };
-      };
-    };
+    networkmanager.enable = true;
   };
 
-  # Create environment file from SOPS secrets
-  system.activationScripts.wifi-env = {
-    text = ''
-      mkdir -p /run/secrets
-      echo "WIFI_SSID=$(cat ${config.sops.secrets.wifi-ssid.path})" > /run/secrets/wifi-env
-      echo "WIFI_PSK=$(cat ${config.sops.secrets.wifi-psk.path})" >> /run/secrets/wifi-env
-      chmod 600 /run/secrets/wifi-env
-    '';
-    deps = [ "sops-nix" ];
-  };
+  # Create NetworkManager connection file from SOPS secrets (temporarily disabled)
+  # systemd.services.create-wifi-connection = {
+  #   description = "Create NetworkManager WiFi connection from SOPS secrets";
+  #   wantedBy = [ "multi-user.target" ];
+  #   after = [ "sops-nix.service" "NetworkManager.service" ];
+  #   serviceConfig = {
+  #     Type = "oneshot";
+  #     RemainAfterExit = true;
+  #   };
+  #   script = ''
+  #     # Create NetworkManager system connection directory
+  #     mkdir -p /etc/NetworkManager/system-connections
+
+  #     # Read secrets
+  #     WIFI_SSID=$(cat ${config.sops.secrets.wifi-ssid.path})
+  #     WIFI_PSK=$(cat ${config.sops.secrets.wifi-psk.path})
+
+  #     # Create connection file
+  #     cat > /etc/NetworkManager/system-connections/devnullvoid.nmconnection << EOF
+  #     [connection]
+  #     id=devnullvoid
+  #     uuid=$(${pkgs.util-linux}/bin/uuidgen)
+  #     type=wifi
+  #     autoconnect=true
+  #     autoconnect-priority=1
+
+  #     [wifi]
+  #     mode=infrastructure
+  #     ssid=$WIFI_SSID
+
+  #     [wifi-security]
+  #     key-mgmt=wpa-psk
+  #     psk=$WIFI_PSK
+
+  #     [ipv4]
+  #     method=auto
+
+  #     [ipv6]
+  #     addr-gen-mode=stable-privacy
+  #     method=auto
+  #     EOF
+
+  #     # Set correct permissions
+  #     chmod 600 /etc/NetworkManager/system-connections/devnullvoid.nmconnection
+  #     chown root:root /etc/NetworkManager/system-connections/devnullvoid.nmconnection
+
+  #     # Reload NetworkManager to pick up the new connection
+  #     ${pkgs.systemd}/bin/systemctl reload-or-restart NetworkManager
+  #   '';
+  # };
 } 

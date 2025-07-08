@@ -95,6 +95,7 @@ in {
     wget
     curl
     vim
+    sops  # for manual WiFi setup script
   ];
 
   xdg.portal = {

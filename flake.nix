@@ -51,6 +51,7 @@
             inputs.nixos-hardware.nixosModules.dell-latitude-5520 # CHANGEME: check https://github.com/NixOS/nixos-hardware
             inputs.home-manager.nixosModules.home-manager
             inputs.stylix.nixosModules.stylix
+            inputs.sops-nix.nixosModules.sops
             ./hosts/procyon/configuration.nix # CHANGEME: change the path to match your host folder
           ];
         };

@@ -13,5 +13,6 @@
     ./system
     ./openvpn
     ./cleanup
+    ./power-status
   ];
 }
