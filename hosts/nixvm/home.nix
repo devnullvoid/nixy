@@ -1,59 +1,40 @@
 { pkgs, config, inputs, ... }: {
   imports = [
-    # Flake inputs
+    # Essential inputs only
     inputs.nix-index-database.hmModules.nix-index
     ./variables.nix
 
-    # Essential programs for flake testing
-    ../../home/programs/nvf          # Neovim (needed for config editing)
-    ../../home/programs/shell        # Shell config for testing (includes ripgrep)
+    # Only essential programs for basic Hyprland testing
+    ../../home/programs/shell        # Minimal shell (fish/zsh have lots of deps)
     ../../home/programs/git          # Git (essential for flake work)
-    ../../home/programs/git/signing.nix
-    ../../home/programs/gpg          # GPG for git signing
     ../../home/programs/kitty        # Terminal
-    ../../home/programs/fetch        # System info
-    ../../home/programs/thunar       # File manager (GUI testing)
-    ../../home/programs/qutebrowser  # Lightweight browser for testing
-    ../../home/programs/duckduckgo-colorscheme
-    ../../home/programs/anyrun       # Launcher
     
-    # Essential scripts only (removed heavy/unnecessary ones)
-    ../../home/scripts/nixy          # Flake management scripts
-    ../../home/scripts/screenshot    # Screenshot functionality
-    ../../home/scripts/brightness    # Display brightness
-    ../../home/scripts/night-shift   # Blue light filter
-    ../../home/scripts/hyprpanel     # Panel scripts
-    ../../home/scripts/hyprfocus     # Window focus scripts
-    ../../home/scripts/notification  # Notification scripts
-    ../../home/scripts/system        # System scripts
-    
-    # Full Hyprland system for flake testing
+    # Core Hyprland system only (no extras)
     ../../home/system/hyprland       # Window manager
     ../../home/system/hyprpaper      # Wallpaper
-    ../../home/system/hypridle       # Idle management
     ../../home/system/hyprlock       # Screen lock
-    ../../home/system/hyprpanel      # Panel
     ../../home/system/wofi           # App launcher
-    ../../home/system/zathura        # PDF viewer (lightweight)
     ../../home/system/mime           # MIME types
-    ../../home/system/udiskie        # Auto-mount
-    ../../home/system/clipman        # Clipboard manager
     
-    # Removed unnecessary modules:
-    # ../../home/programs/lazygit      # Git UI (nvf has git integration)
-    # ../../home/programs/tailscale    # VPN not needed in VM
-    # ../../home/scripts/openvpn       # VPN scripts not needed
-    # ../../home/scripts/caffeine      # Power management not needed in VM
-    # ../../home/scripts/sounds        # Audio scripts not needed
-    # ../../home/scripts/power-status  # Power management not needed in VM
-    # ../../home/scripts/cleanup       # Not essential for testing
-    # ../../home/scripts/nerdfont-fzf  # Optional font selector
+    # Removed for minimal VM:
+    # ../../home/programs/nvf          # HEAVY: Full Neovim setup with many plugins
+    # ../../home/programs/git/signing.nix  # GPG signing not essential
+    # ../../home/programs/gpg          # GPG not essential for testing
+    # ../../home/programs/fetch        # System info tools
+    # ../../home/programs/thunar       # HEAVY: File manager + icon themes
+    # ../../home/programs/qutebrowser  # HEAVY: Browser with custom homepage
+    # ../../home/programs/duckduckgo-colorscheme
+    # ../../home/programs/anyrun       # HEAVY: Launcher with dependencies
     
-    # Skip heavy user applications:
-    # ../../home/programs/zen          # Heavy browser
-    # ../../home/programs/discord      # Chat app
-    # ../../home/programs/spicetify    # Spotify theming
-    # ../../home/programs/nextcloud    # Cloud sync
+    # Removed ALL scripts (save significant space):
+    # ../../home/scripts/*             # All scripts add dependencies
+    
+    # Removed heavy Hyprland components:
+    # ../../home/system/hypridle       # Idle management not essential
+    # ../../home/system/hyprpanel      # HEAVY: Panel with many deps
+    # ../../home/system/zathura        # PDF viewer not essential
+    # ../../home/system/udiskie        # Auto-mount not essential  
+    # ../../home/system/clipman        # Clipboard manager not essential
   ];
 
   home = {
@@ -61,51 +42,20 @@
     homeDirectory = "/home/" + config.var.username;
 
     packages = with pkgs; [
-      # Essential apps for flake testing only
-      firefox                        # Web browser (lighter than zen)
+      # Absolute minimum packages only
+      firefox                        # Browser (needed for testing)
       
-      # Essential development tools (minimal set)
-      just                           # Command runner (for build scripts)
-      
-      # Minimal utilities
-      zip
-      unzip
-      jq                            # JSON processor (useful for configs)
+      # Basic utilities only
       tree                          # File tree viewer
-      file                          # File type detection
       btop                          # System monitor
-      pfetch                        # System info
       
-      # Removed unnecessary packages:
-      # Wine/Bottles related - none included
-      # Audio/Video apps:
-      # vlc                          # Video player
-      # mpv                          # Video player  
-      # Development tools:
-      # go                           # Go SDK
-      # bun                          # JS runtime
-      # nodejs                       # Node.js
-      # python3                      # Python
-      # pnpm                         # Package manager
-      # air                          # Go live reload
-      # Heavy apps:
-      # bitwarden                    # Password manager
-      # gnome-calendar               # Calendar
-      # textpieces                   # Text manipulation
-      # Fun/optional terminal apps:
-      # peaclock                     # Terminal clock
-      # cbonsai                      # Terminal bonsai
-      # pipes                        # Terminal screensaver
-      # cmatrix                      # Matrix effect
-      # Image optimization tools:
-      # optipng                      # PNG optimizer
-      # jpegoptim                    # JPEG optimizer
-      # htop                         # System monitor (btop is enough)
-      # fastfetch                    # System info (pfetch is enough)
+      # Removed to save space:
+      # just                         # Command runner (build scripts work without it)
+      # zip/unzip                    # Not essential for basic testing
+      # jq                           # JSON processor
+      # file                         # File type detection  
+      # pfetch                       # System info
     ];
-
-    # Don't copy profile picture for VM
-    # file.".face.icon" = {source = ./profile_picture.png;};
 
     # Don't touch this
     stateVersion = "25.05";

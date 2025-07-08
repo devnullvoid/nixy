@@ -1,64 +1,80 @@
-# NixVM Configuration
+# NixVM Configuration - Ultra-Minimal
 
-A streamlined NixOS VM configuration for testing the nixy flake configuration with minimal bloat.
+An ultra-minimal NixOS VM configuration for basic Hyprland testing with drastically reduced storage footprint (~3-5GB instead of 30GB+).
 
-## Features
+## Key Space Optimizations
 
-### Core System
-- **Fast builds**: Uses `pkgs.hyprland` instead of building from source
-- **Minimal footprint**: Removes unnecessary components while maintaining full flake testing capability
-- **Complete Hyprland ecosystem**: Full window manager, panel, idle management, etc.
-- **SDDM with theming**: Login manager with Stylix integration
-- **Fonts and styling**: Complete font stack and theming system
+### Major Reductions
+- **Fonts**: Removed full font collection (~3GB), kept only essential fonts
+- **Neovim**: Removed full nvf setup with plugins (~1GB+)
+- **Shell tools**: Removed heavy shell dependencies and tools (~500MB+)
+- **File manager**: Removed Thunar + icon themes (~800MB+)
+- **Browser**: Kept Firefox but removed qutebrowser with custom homepage
+- **Scripts**: Removed ALL custom scripts to eliminate dependencies
+- **Panel**: Removed HyprPanel to eliminate heavy dependencies
+- **Documentation**: Disabled all man pages, docs, and dev docs
+- **Hardware support**: Disabled firmware, microcode updates
 
-### What's Included
-- **Essential system**: Users, SSH, fonts, nix configuration
-- **Hyprland environment**: Full WM setup with all components
-- **Development essentials**: Neovim, Git, shell configuration
-- **GUI applications**: Firefox, file manager, terminal, PDF viewer
-- **System scripts**: Screenshot, brightness, night-shift, panel management
-- **Minimal utilities**: File tools, system monitoring, compression
+### What's Included (Minimal Set)
+- **Core Hyprland**: Window manager, wallpaper, screen lock, launcher
+- **Essential apps**: Firefox browser, terminal (kitty)
+- **Basic tools**: Git, vim, shell (fish), tree, btop
+- **SDDM**: Login manager with basic theming
+- **Fonts**: Only DejaVu, emoji, and one nerd font
 
-### What's Removed (Bloat Reduction)
-- **Audio system**: No PipeWire/audio in VM
-- **Bluetooth**: Not needed for VM testing
-- **VPN/Networking**: Tailscale and OpenVPN scripts removed
-- **Development SDKs**: No Go, Node.js, Python, etc.
-- **Media players**: No VLC, MPV, or video applications
-- **Heavy applications**: No Bitwarden, calendar, text manipulation tools
-- **Fun terminal apps**: No cmatrix, pipes, cbonsai, etc.
-- **Image optimization**: No optipng, jpegoptim
-- **Power management**: No caffeine, power-status scripts (VM doesn't need them)
-- **Wine/Bottles**: No Windows compatibility layer
+### What's Removed
+- **Development tools**: No Neovim, no language servers, no development packages
+- **System scripts**: No screenshot, brightness, panel management scripts
+- **File management**: No file manager, no auto-mounting
+- **Heavy Hyprland components**: No panel, no idle management, no clipboard manager
+- **Shell enhancements**: Minimal shell setup without heavy tooling
+- **GPG/Signing**: No GPG setup or git signing
+- **System info tools**: No fetch programs or system monitoring extras
+- **Archive tools**: No zip/unzip utilities
+- **Network tools**: No VPN, minimal networking
+
+## Expected Size
+- **VM image**: ~3-5GB (down from 30GB+)
+- **Memory usage**: ~1-2GB RAM
+- **Build time**: Significantly faster due to fewer packages
 
 ## Usage
 
-### Building the VM
+### Building the Minimal VM
 ```bash
-# Build the VM disk image
-just build-vm nixvm
+# Build the ultra-minimal VM
+nix build .#nixosConfigurations.nixvm.config.system.build.toplevel
 
-# Run the VM
-just run-vm nixvm
+# For actual VM usage, build disk image
+just build-vm nixvm
 ```
 
-### Testing Focus
-This configuration is optimized for testing:
-- **Hyprland functionality**: Window management, effects, animations
-- **Theming system**: Stylix integration and color schemes  
-- **Panel and widgets**: HyprPanel functionality
-- **Login experience**: SDDM theming and login flow
-- **Core workflows**: File management, terminal usage, basic GUI apps
+### What You Can Test
+- **Basic Hyprland functionality**: Window management, tiling
+- **Login experience**: SDDM with basic theming
+- **Core workflows**: Terminal usage, basic GUI
+- **Theme system**: Basic Stylix theming (limited scope)
 
-### Performance
-- **Faster builds**: No source compilation of Hyprland
-- **Reduced memory**: Minimal package set and no unnecessary services
-- **Quick iteration**: Essential components only for efficient testing
+### What You Cannot Test
+- **Full development workflow**: No Neovim, limited dev tools
+- **Advanced Hyprland features**: No panel, limited scripting
+- **File management**: No GUI file manager
+- **System management**: No custom scripts or tools
 
-## VM Optimizations
-- GRUB bootloader for MBR compatibility
-- VM-specific environment variables
-- Optimized for virtualization environments
-- No unnecessary hardware support
+## Limitations
+This is a **basic testing environment** only. It's designed for:
+- Quick Hyprland testing
+- Login/theme validation
+- Basic functionality verification
+- Space-constrained VMs
 
-This configuration provides the full flake testing experience with significantly reduced build times and resource usage. 
+For full feature testing, use the regular nixvm configuration or the main system.
+
+## Performance Optimizations
+- **Aggressive memory management**: Minimal swap, optimized kernel parameters
+- **Reduced journaling**: Smaller logs, shorter retention
+- **Minimal documentation**: No man pages, docs disabled
+- **Single-threaded builds**: Prevents memory exhaustion
+- **Optimized filesystem**: NoAtime, discard for SSDs
+
+This configuration prioritizes **minimal disk usage** over **comprehensive testing capabilities**. 
