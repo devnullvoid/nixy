@@ -34,7 +34,7 @@ in {
     "file:///home/${user}/Pictures Pictures"
     "file:///home/${user}/nextcloud Nextcloud"
     "file:///home/${user}/.config/nixos NixOS"
-    "file:///home/${user}/dev Development"
+    "file:///home/${user}/Dev Development"
   ];
 
   home.file.".config/xarchiver/xarchiverrc".text = ''

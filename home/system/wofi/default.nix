@@ -92,7 +92,7 @@ in {
 
         #entry:selected {
           background-color: ${accent};
-          color: ${foreground};
+          color: ${background};
         }
 
         #unselected {}

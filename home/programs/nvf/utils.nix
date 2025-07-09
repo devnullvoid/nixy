@@ -11,7 +11,10 @@
       enable = true;
       cmp.enable = true;
     };
-    statusline.lualine.enable = true;
+    statusline.lualine = {
+      enable = true;
+      theme = "base16";
+    };
 
     autocomplete = {
       nvim-cmp = {

@@ -10,8 +10,8 @@
       rounding = 15;
       gaps-in = 8;
       gaps-out = 8 * 2;
-      active-opacity = 0.94;
-      inactive-opacity = 0.90;
+      active-opacity = 0.90;
+      inactive-opacity = 0.85;
       blur = true;
       border-size = 2;
       animation-speed = "fast"; # "fast" | "medium" | "slow"
@@ -33,25 +33,31 @@
   config.stylix = {
     enable = true;
 
-    # Mocha
-    # See https://tinted-theming.github.io/tinted-gallery/ for more schemes
     base16Scheme = {
-      base00 = "0F0F15"; # Default Background
-      base01 = "15151A"; # Lighter Background (Used for status bars, line number and folding marks)
-      base02 = "313244"; # Selection Background
-      base03 = "45475a"; # Comments, Invisibles, Line Highlighting
-      base04 = "585b70"; # Dark Foreground (Used for status bars)
-      base05 = "cdd6f4"; # Default Foreground, Caret, Delimiters, Operators
-      base06 = "f5e0dc"; # Light Foreground (Not often used)
-      base07 = "b4befe"; # Light Background (Not often used)
-      base08 = "f38ba8"; # Variables, XML Tags, Markup Link Text, Markup Lists, Diff Deleted
-      base09 = "fab387"; # Integers, Boolean, Constants, XML Attributes, Markup Link Url
-      base0A = "f9e2af"; # Classes, Markup Bold, Search Text Background
-      base0B = "a6e3a1"; # Strings, Inherited Class, Markup Code, Diff Inserted
-      base0C = "94e2d5"; # Support, Regular Expressions, Escape Characters, Markup Quotes
-      base0D = "89b4fa"; # Functions, Methods, Attribute IDs, Headings, Accent color
-      base0E = "cba6f7"; # Keywords, Storage, Selector, Markup Italic, Diff Changed
-      base0F = "f2cdcd"; # Deprecated, Opening/Closing Embedded Language Tags, e.g. <?php ?>
+      base00 = "1e1e2e"; # base
+      base01 = "181825"; # mantle
+      base02 = "313244"; # surface0
+      base03 = "45475a"; # surface1
+      base04 = "585b70"; # surface2
+      base05 = "cdd6f4"; # text
+      base06 = "f5e0dc"; # rosewater
+      base07 = "b4befe"; # lavender
+      base08 = "f38ba8"; # red
+      base09 = "fab387"; # peach
+      base0A = "f9e2af"; # yellow
+      base0B = "a6e3a1"; # green
+      base0C = "94e2d5"; # teal
+      base0E = "89b4fa"; # blue
+      base0D = "cba6f7"; # mauve
+      base0F = "f2cdcd"; # flamingo
+      base10 = "181825"; # mantle - darker background
+      base11 = "11111b"; # crust - darkest background
+      base12 = "eba0ac"; # maroon - bright red
+      base13 = "f5e0dc"; # rosewater - bright yellow
+      base14 = "a6e3a1"; # green - bright green
+      base15 = "89dceb"; # sky - bright cyan
+      base16 = "74c7ec"; # sapphire - bright blue
+      base17 = "f5c2e7"; # pink - bright purple
     };
 
     cursor = {
