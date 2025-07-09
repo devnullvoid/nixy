@@ -4,6 +4,7 @@
     ./fish.nix
     ./starship.nix
     ./tmux.nix
+    ./btop.nix
     
     # Shell integrations and tools
     ./fzf.nix

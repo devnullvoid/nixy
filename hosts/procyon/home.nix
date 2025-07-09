@@ -114,4 +114,10 @@
   };
 
   programs.home-manager.enable = true;
+
+  # Set default terminal for all applications
+  home.sessionVariables = {
+    TERMINAL = "kitty";
+    TERM = "kitty";
+  };
 }

@@ -31,6 +31,18 @@
     };
   };
 
+  # Ensure kitty is set as default terminal
+  xdg.desktopEntries.kitty = {
+    name = "Kitty";
+    genericName = "Terminal Emulator";
+    exec = "kitty";
+    icon = "utilities-terminal";
+    type = "Application";
+    categories = [ "System" "TerminalEmulator" ];
+    keywords = [ "terminal" "shell" "command" ];
+    startupNotify = true;
+  };
+
   xdg.configFile = {
     "kitty/pass_keys.py".text = ''
       import re

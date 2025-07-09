@@ -58,6 +58,12 @@ in {
     BROWSER = "zen-beta";
   };
 
+  # Set default terminal for applications
+  environment.sessionVariables = {
+    TERMINAL = "kitty";
+    TERM = "kitty";
+  };
+
   services.libinput.enable = true;
   programs.dconf.enable = true;
   services = {

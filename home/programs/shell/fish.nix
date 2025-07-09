@@ -22,7 +22,7 @@ in {
     zip unzip p7zip xz
     
     # System monitoring
-    btop iotop iftop
+    iotop iftop
     
     # Network tools
     mtr traceroute dnsutils
