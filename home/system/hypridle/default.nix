@@ -41,9 +41,15 @@ in {
 
         {
           timeout = 300;  # 5 minutes - dim screen
-          # on-timeout = "brightnessctl -s set 25%";
-          on-timeout = "brightnessctl -s && brightnessctl s 1%";
-          on-resume = "if ! pgrep -x hyprlock >/dev/null; then brightnessctl -r; fi";
+          on-timeout = ''
+            # Save current brightness state then dim to 5%
+            brightnessctl -q --save
+            brightnessctl -q s 5%
+          '';
+          on-resume = ''
+            # Restore saved brightness state
+            brightnessctl -q --restore || true
+          '';
         }
 
         {

@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{pkgs, lib, ...}: {
   programs.nvf.settings.vim = {
     undoFile.enable = true;
     utility = {
@@ -13,7 +13,7 @@
     };
     statusline.lualine = {
       enable = true;
-      theme = "base16";
+      theme = lib.mkForce "catppuccin";
     };
 
     autocomplete = {
