@@ -83,7 +83,7 @@ in {
         }
 
         #text:selected {
-          color: ${foreground};
+          color: ${background};
         }
 
         #entry {

@@ -20,7 +20,7 @@
       disable_ligatures = "never";
       url_style = "curly";
       copy_on_select = "clipboard";
-      cursor_shape = "Underline";
+      cursor_shape = "Block";
       cursor_underline_thickness = 3;
       cursor_trail = 3;
       cursor_trail_decay = "0.1 0.4";

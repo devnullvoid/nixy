@@ -29,6 +29,11 @@
     ../../home/programs/discord
     ../../home/programs/tailscale
     ../../home/programs/anyrun
+    ../../home/programs/zed
+    ../../home/programs/helix
+    ../../home/programs/firefox
+    ../../home/programs/brave
+    ../../home/programs/vscode
 
     # Scripts
     ../../home/scripts # All scripts
@@ -96,10 +101,7 @@
       cmatrix
 
       # Backup
-      brave
-      vscode
-
-      zed-editor
+      # Editors
       code-cursor
       windsurf
     ];

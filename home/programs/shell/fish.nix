@@ -37,6 +37,14 @@ in {
       # Set fish greeting
       set fish_greeting
       
+      # Set cursor shapes for vi mode (block cursor for all modes)
+      set -g fish_cursor_default block
+      # set -g fish_cursor_insert block
+      # set -g fish_cursor_replace_one block
+      # set -g fish_cursor_replace block
+      # set -g fish_cursor_visual block
+      # set -g fish_cursor_external block
+      
       # any-nix-shell integration for better nix-shell experience
       ${pkgs.any-nix-shell}/bin/any-nix-shell fish --info-right | source
       

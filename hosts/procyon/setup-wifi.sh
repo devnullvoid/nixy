@@ -53,6 +53,7 @@ mode=infrastructure
 ssid=$WIFI_SSID
 
 [wifi-security]
+auth-alg=open
 key-mgmt=wpa-psk
 psk=$WIFI_PSK
 
