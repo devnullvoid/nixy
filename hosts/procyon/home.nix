@@ -104,6 +104,10 @@
       # Editors
       code-cursor
       windsurf
+
+      (writers.writeDashBin "xterm" ''
+        kitty "$@"
+      '')
     ];
 
     # Import my profile picture, used by the hyprpanel dashboard
@@ -114,6 +118,8 @@
   };
 
   programs.home-manager.enable = true;
+
+  programs.foot.enable = true;
 
   # Set default terminal for all applications
   home.sessionVariables = {

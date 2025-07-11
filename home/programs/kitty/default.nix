@@ -39,7 +39,6 @@
     icon = "utilities-terminal";
     type = "Application";
     categories = [ "System" "TerminalEmulator" ];
-    keywords = [ "terminal" "shell" "command" ];
     startupNotify = true;
   };
 
