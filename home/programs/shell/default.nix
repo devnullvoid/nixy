@@ -21,6 +21,7 @@
     ./pay-respects.nix
     ./direnv.nix
     ./nix-index.nix
+    ./zellij.nix
     
     # Fish enhancements
     ./fish-abbreviations.nix

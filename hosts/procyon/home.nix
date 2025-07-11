@@ -34,6 +34,7 @@
     ../../home/programs/firefox
     ../../home/programs/brave
     ../../home/programs/vscode
+    ../../home/programs/terminals
 
     # Scripts
     ../../home/scripts # All scripts
