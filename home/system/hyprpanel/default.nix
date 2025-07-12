@@ -57,6 +57,29 @@ in {
         };
       };
 
+      menus = {
+        dashboard = {
+          directories = {
+            left = {
+              # directory1.command = "${lib.getExe pkgs.ghostty} --title=ephemeral -e yazi $XDG_DOWNLOAD_DIR";
+              directory1.label = "󰉍  Downloads";
+              # directory2.command = "${lib.getExe pkgs.ghostty} --title=ephemeral -e yazi $XDG_VIDEOS_DIR";
+              directory2.label = "󰉏  Videos";
+              directory3.command = "bash -c 'xdg-open $HOME/Dev'";
+              directory3.label = "󰚝  Dev";
+            };
+            right = {
+              # directory1.command = "${lib.getExe pkgs.ghostty} --title=ephemeral -e yazi $XDG_DOCUMENTS_DIR";
+              directory1.label = "󱧶  Documents";
+              # directory2.command = "${lib.getExe pkgs.ghostty} --title=ephemeral -e yazi $XDG_PICTURES_DIR";
+              directory2.label = "󰉏  Pictures";
+              # directory3.command = "${lib.getExe pkgs.ghostty} --title=ephemeral -e yazi $HOME";
+              directory3.label = "󱂵  Home";
+            };
+          };
+        };
+      };
+
       theme.font.name = font;
       theme.font.size = fontSizeForHyprpanel;
 
@@ -105,7 +128,7 @@ in {
         else "0px 0px 3px 1px #16161e";
       theme.bar.buttons.style = "default";
       theme.bar.buttons.monochrome = true;
-      theme.bar.menus.monochrome = true;
+      theme.bar.menus.monochrome = false;
       theme.bar.menus.card_radius = toString rounding + "px";
       theme.bar.menus.border.size = toString border-size + "px";
       theme.bar.menus.border.radius = toString rounding + "px";

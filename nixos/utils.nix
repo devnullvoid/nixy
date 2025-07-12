@@ -101,6 +101,7 @@ in {
     wget
     curl
     vim
+    deskflow
     sops  # for manual WiFi setup script
   ];
 

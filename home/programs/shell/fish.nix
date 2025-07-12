@@ -5,8 +5,8 @@ in {
 
   home.packages = with pkgs; [ 
     # Core shell tools
-    bat ripgrep tldr sesh rmtrash trash-cli
-    
+    ripgrep tldr sesh rmtrash trash-cli 
+
     # Additional useful CLI tools from devnullvoid-nix
     any-nix-shell # for fish integration
     fd # modern find replacement
@@ -39,9 +39,9 @@ in {
       
       # Set cursor shapes for vi mode (block cursor for all modes)
       set -g fish_cursor_default block
-      # set -g fish_cursor_insert block
-      # set -g fish_cursor_replace_one block
+      set -g fish_cursor_insert block
       # set -g fish_cursor_replace block
+      # set -g fish_cursor_replace_one block
       # set -g fish_cursor_visual block
       # set -g fish_cursor_external block
       

@@ -3,6 +3,7 @@
     viAlias = false;
     vimAlias = true;
     withNodeJs = true;
+    lineNumberMode = "number";
     # syntaxHighlighting = true;
     options = {
       autoindent = true;

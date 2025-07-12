@@ -2,6 +2,7 @@
   imports = [
     # Core shell configuration
     ./fish.nix
+    ./misc.nix
     ./starship.nix
     ./tmux.nix
     ./btop.nix

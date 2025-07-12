@@ -30,5 +30,5 @@ in {
   };
   programs.gitui = {
     enable = true;
-  }
+  };
 }

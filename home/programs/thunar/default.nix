@@ -14,18 +14,18 @@ in {
     xarchiver
   ];
 
-  gtk = {
-    iconTheme = {
-      name = "WhiteSur";
-      package = pkgs.whitesur-icon-theme.override {
-        boldPanelIcons = true;
-        alternativeIcons = true;
-      };
-    };
-  };
+  # gtk = {
+  #   iconTheme = {
+  #     name = "Colloid-purple";
+  #     package = pkgs.colloid-icon-theme.override {
+  #       schemeVariants = [ "catppuccin" ];
+  #       colorVariants = [ "purple" ];
+  #     };
+  #   };
+  # };
 
   home.sessionVariables = {
-    XDG_ICON_DIR = "${pkgs.whitesur-icon-theme}/share/icons/WhiteSur";
+    XDG_ICON_DIR = "${pkgs.colloid-icon-theme}/share/icons/Colloid-purple";
   };
 
   # bookmarks for the side pane
