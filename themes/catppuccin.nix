@@ -34,6 +34,7 @@
     stylix = {
       enable = true;
 
+      # base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
       base16Scheme = {
         base00 = "1e1e2e"; # base
         base01 = "181825"; # mantle
