@@ -157,5 +157,26 @@ in {
       gaa = "git add .";
       gcm = "git commit -m";
     };
+
+    shellAbbrs = {
+      # Navigation shortcuts
+      ".." = "cd ..";
+      "..." = "cd ../../";
+      "...." = "cd ../../../";
+      "....." = "cd ../../../../";
+      
+      # Git shortcuts (complementary to aliases)
+      gapa = "git add --patch";
+      grpa = "git reset --patch";
+      gst = "git status";
+      gdh = "git diff HEAD";
+      gph = "git push -u origin HEAD";
+      gcob = "git checkout -b";
+      gcom = "git checkout master";  # renamed from gcm to avoid conflict
+      gcd = "git checkout develop";
+      gsp = "git stash push -m";
+      gsa = "git stash apply stash^{/";
+      gsl = "git stash list";
+    };
   };
 } 
