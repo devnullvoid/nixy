@@ -25,7 +25,6 @@
     ./zellij.nix
     
     # Fish enhancements
-    ./fish-abbreviations.nix
     ./fish-functions.nix
   ];
 }

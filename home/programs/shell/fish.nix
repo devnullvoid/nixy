@@ -156,6 +156,29 @@ in {
 
       gaa = "git add .";
       gcm = "git commit -m";
+
+      # Nix and NixOS
+      nixb = "nix build";
+      nixr = "nix run";
+      nixe = "nix eval";
+      nixi = "nix-instantiate";
+      nixs = "nix-shell";
+      nixd = "nix develop";
+      nixc = "nix-collect-garbage -d";
+      nixg = "nix-env -qaP | grep";
+      nixu = "nix flake update";
+      nixfmt = "nixpkgs-fmt";
+      nrs = "nix repl '<nixpkgs>'";
+      nlog = "journalctl -xeu nix-daemon.service";
+
+      # NixOS specific
+      nrsw = "sudo nixos-rebuild switch";
+      nrt = "sudo nixos-rebuild test";
+      nrb = "sudo nixos-rebuild boot";
+      nru = "sudo nixos-rebuild dry-run";
+      nrsf = "sudo nixos-rebuild switch --flake .#";
+      nrswf = "sudo nixos-rebuild switch --flake .# --show-trace";
+      nrswq = "sudo nixos-rebuild switch --upgrade";
     };
 
     shellAbbrs = {
@@ -177,6 +200,24 @@ in {
       gsp = "git stash push -m";
       gsa = "git stash apply stash^{/";
       gsl = "git stash list";
+
+      # Nix and NixOS
+      nb = "nix build";
+      nr = "nix run";
+      ns = "nix shell";
+      nd = "nix develop";
+      ncg = "nix-collect-garbage -d";
+      nfu = "nix flake update";
+      nrepl = "nix repl '<nixpkgs>'";
+      nfmt = "nixpkgs-fmt";
+
+      # NixOS specific
+      nsw = "sudo nixos-rebuild switch";
+      nt = "sudo nixos-rebuild test";
+      nbt = "sudo nixos-rebuild boot";
+      ndn = "sudo nixos-rebuild dry-run";
+      nswf = "sudo nixos-rebuild switch --flake .#";
+      nswq = "sudo nixos-rebuild switch --upgrade";
     };
   };
 } 
