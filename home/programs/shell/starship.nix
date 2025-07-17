@@ -5,15 +5,15 @@ let
   # background-alt = "#${config.lib.stylix.colors.color_01}";
   colors = config.lib.stylix.colors;
   lang = {
-    style = "bg:color_13";
-    format = "[[ $symbol( $version) ](fg:color_03 bg:color_13)]($style)";
+    style = "bg:color_13 fg:color_02";
+    format = "[ $symbol( $version) ]($style)";
   };
   git = {
-    style = "bg:color_07 italic";
+    style = "bg:color_07 fg:color_02 italic";
     format = "([\\[$all_status$ahead_behind\\] ]($style))";
   };
   container = {
-    style = "bg:color_15";
+    style = "bg:color_15 fg:color_02";
     format = "[ $symbol $name ]($style)";
   };
 in {
@@ -83,14 +83,36 @@ in {
       directory = {
         style = "bg:color_03 fg:color_05";
         format = "[ $path ]($style)";
-        truncation_length = 3;
+        truncation_length = 5;
         truncation_symbol = "…/";
         substitutions = {
-          "Documents" = "󰈙 ";
-          "Downloads" = "󰇚 ";
-          "Music" = "󰝚 ";
-          "Pictures" = " ";
-          "Dev" = "󰲋 ";
+          # "Documents" = "󰈙 ";
+          # "Downloads" = "󰇚 ";
+          # "Music" = "󰝚 ";
+          # "Pictures" = " ";
+          # "Dev" = "󰲋 ";
+          "Applications" = "  ";
+          "Desktop" = "  ";
+          "Dev" = "  ";
+          "Developer" = " 󰲋 ";
+          "Documents" = " 󰈙 ";
+          "Downloads" = "  ";
+          "Games" = "  ";
+          "GitHub" = "  ";
+          "Library" = "  ";
+          "Movies" = "  ";
+          "Music" = "  ";
+          "Pictures" = "  ";
+          "Projects" = "  ";
+          "Public" = "  ";
+          "Screenshots" = " 󱣴 ";
+          "Thunderbird" = "  ";
+          "Firefox" = "  ";
+          "Videos" = "  ";
+          "github" = "  ";
+          "source" = "  ";
+          "~" = "  ";
+          "~/.config" = "  ";
         };
         read_only = " 󰌾";
       };
@@ -121,51 +143,51 @@ in {
         disabled = false;
         style = "bg:color_02 fg:color_05";
         symbols = {
-          Alpaquita = " ";
-          Alpine = " ";
-          AlmaLinux = " ";
-          Amazon = " ";
-          Android = " ";
-          Arch = " ";
-          Artix = " ";
-          CachyOS = " ";
-          CentOS = " ";
-          Debian = " ";
-          DragonFly = " ";
-          Emscripten = " ";
-          EndeavourOS = " ";
-          Fedora = " ";
-          FreeBSD = " ";
-          Garuda = "󰛓 ";
-          Gentoo = " ";
-          HardenedBSD = "󰞌 ";
-          Illumos = "󰈸 ";
-          Kali = " ";
-          Linux = " ";
-          Mabox = " ";
-          Macos = " ";
-          Manjaro = " ";
-          Mariner = " ";
-          MidnightBSD = " ";
-          Mint = " ";
-          NetBSD = " ";
-          NixOS = " ";
-          Nobara = " ";
-          OpenBSD = "󰈺 ";
-          openSUSE = " ";
-          OracleLinux = "󰌷 ";
-          Pop = " ";
-          Raspbian = " ";
-          Redhat = " ";
-          RedHatEnterprise = " ";
-          RockyLinux = " ";
-          Redox = "󰀘 ";
-          Solus = "󰠳 ";
-          SUSE = " ";
-          Ubuntu = " ";
-          Unknown = " ";
-          Void = " ";
-          Windows = "󰍲 ";
+          Alpaquita = "  ";
+          Alpine = "  ";
+          AlmaLinux = "  ";
+          Amazon = "  ";
+          Android = "  ";
+          Arch = "  ";
+          Artix = "  ";
+          CachyOS = "  ";
+          CentOS = "  ";
+          Debian = "  ";
+          DragonFly = "  ";
+          Emscripten = "  ";
+          EndeavourOS = "  ";
+          Fedora = "  ";
+          FreeBSD = "  ";
+          Garuda = " 󰛓 ";
+          Gentoo = "  ";
+          HardenedBSD = " 󰞌 ";
+          Illumos = " 󰈸 ";
+          Kali = "  ";
+          Linux = "  ";
+          Mabox = "  ";
+          Macos = "  ";
+          Manjaro = "  ";
+          Mariner = "  ";
+          MidnightBSD = "  ";
+          Mint = "  ";
+          NetBSD = "  ";
+          NixOS = "  ";
+          Nobara = "  ";
+          OpenBSD = " 󰈺 ";
+          openSUSE = "  ";
+          OracleLinux = " 󰌷 ";
+          Pop = "  ";
+          Raspbian = "  ";
+          Redhat = "  ";
+          RedHatEnterprise = "  ";
+          RockyLinux = "  ";
+          Redox = " 󰀘 ";
+          Solus = " 󰠳 ";
+          SUSE = "  ";
+          Ubuntu = "  ";
+          Unknown = "  ";
+          Void = "  ";
+          Windows = " 󰍲 ";
           };
       };
       # package.symbol = "󰏗 ";
@@ -182,7 +204,7 @@ in {
       # gradle.symbol = " ";
 
       fill = {
-        style = "fg:color_01";
+        style = "fg:color_02";
         symbol = "·";
       };
 
@@ -216,7 +238,7 @@ in {
       git_branch = {
         symbol = "";
         inherit (git) style;
-        format = "[[ $symbol $branch ](fg:color_01 bg:color_07)]($style)";
+        format = "[ $symbol $branch ]($style)";
       };
 
       git_status = {
@@ -260,8 +282,8 @@ in {
       };
 
       python = {
-        inherit (lang) style;
-        format = "[(\($virtualenv\) )]($style)";
+        inherit (lang) style format;
+        # format = "[(\($virtualenv\) )]($style)";
       };
 
       rust = {

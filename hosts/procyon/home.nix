@@ -99,7 +99,15 @@
       pnpm
       air
 
+      # Nix
+      nil
+      alejandra
+      statix
+      nh
+      nurl
+
       # Utils
+      dua
       zip
       unzip
       optipng
@@ -117,6 +125,10 @@
       cmatrix
 
       # Backup
+      kopia
+      kopia-ui
+      restic
+
       # Editors
       code-cursor
       windsurf
