@@ -1,55 +1,293 @@
 # starship is a minimal, fast, and extremely customizable prompt for any shell!
 { config, lib, ... }:
 let
-  accent = "#${config.lib.stylix.colors.base0D}";
-  background-alt = "#${config.lib.stylix.colors.base01}";
+  # accent = "#${config.lib.stylix.colors.color_13}";
+  # background-alt = "#${config.lib.stylix.colors.color_01}";
+  colors = config.lib.stylix.colors;
+  lang = {
+    style = "bg:color_13";
+    format = "[[ $symbol( $version) ](fg:color_03 bg:color_13)]($style)";
+  };
+  git = {
+    style = "bg:color_07 italic";
+    format = "([\\[$all_status$ahead_behind\\] ]($style))";
+  };
+  container = {
+    style = "bg:color_15";
+    format = "[ $symbol $name ]($style)";
+  };
 in {
   programs.starship = {
     enable = true;
     settings = {
       add_newline = true;
       format = lib.concatStrings [
-        "$nix_shell"
-        "$hostname"
+        "[](fg:color_02)"
+        "$os"
+        "[](bg:color_03 fg:color_02)"
         "$directory"
-        "$git_branch"
-        "$git_state"
-        "$git_status"
-        "$character"
+        "[](bg:color_07 fg:color_03)"
+        "$git_branch$git_status"
+        "[](fg:color_07 bg:color_13)"
+        "$c$rust$golang$nodejs$java$python$kotlin$dotnet$package"
+        "[](fg:color_13 bg:color_15)"
+        "$container"
+        "$docker_context"
+        "$nix_shell"
+        "$conda"
+        "[ ](fg:color_15)"
+        "$fill"
+        "[ ](fg:color_02)"
+        "$time"
+        "[](fg:color_02)"
+        "$line_break$character"
       ];
-      directory = { style = accent; };
 
-      character = {
-        success_symbol = "[❯](${accent})";
-        error_symbol = "[❯](red)";
-        vimcmd_symbol = "[❮](cyan)";
+      # Theming
+      palette = lib.mkForce"default";
+      palettes.default = with colors.withHashtag; {
+        color_00 = base00;
+        color_01 = base01;
+        color_02 = base02;
+        color_03 = base03;
+        color_04 = base04;
+        color_05 = base05;
+        color_06 = base06;
+        color_07 = base07;
+        color_08 = base08;
+        color_09 = base09;
+        color_10 = base0A;
+        color_11 = base0B;
+        color_12 = base0C;
+        color_13 = base0D;
+        color_14 = base0E;
+        color_15 = base0F;
+        color_16 = base10;
+        color_17 = base11;
+        color_18 = base12;
+        color_19 = base13;
+        color_20 = base14;
+        color_21 = base15;
+        color_22 = base16;
+        color_23 = base17;
       };
 
-      nix_shell = {
-        format = "[$symbol]($style) ";
-        symbol = "🐚";
-        style = "";
+      # Converts starship to use Nerd Font symbols
+      # aws.symbol = " ";
+      # buf.symbol = " ";
+      # c.symbol = " ";
+      # cmake.symbol = " ";
+      # conda.symbol = " ";
+      # crystal.symbol = " ";
+      # dart.symbol = " ";
+      directory = {
+        style = "bg:color_03 fg:color_05";
+        format = "[ $path ]($style)";
+        truncation_length = 3;
+        truncation_symbol = "…/";
+        substitutions = {
+          "Documents" = "󰈙 ";
+          "Downloads" = "󰇚 ";
+          "Music" = "󰝚 ";
+          "Pictures" = " ";
+          "Dev" = "󰲋 ";
+        };
+        read_only = " 󰌾";
+      };
+      # docker_context.symbol = " ";
+      # elixir.symbol = " ";
+      # elm.symbol = " ";
+      # fennel.symbol = " ";
+      # fossil_branch.symbol = " ";
+      # git_branch.symbol = " ";
+      # git_commit.tag_symbol = "  ";
+      # golang.symbol = " ";
+      # guix_shell.symbol = " ";
+      # haskell.symbol = " ";
+      # haxe.symbol = " ";
+      # hg_branch.symbol = " ";
+      # hostname.ssh_symbol = " ";
+      # java.symbol = " ";
+      # julia.symbol = " ";
+      # kotlin.symbol = " ";
+      # lua.symbol = " ";
+      # memory_usage.symbol = "󰍛 ";
+      # meson.symbol = "󰔷 ";
+      # nim.symbol = "󰆥 ";
+      # nix_shell.symbol = " ";
+      # nodejs.symbol = " ";
+      # ocaml.symbol = " ";
+      os = {
+        disabled = false;
+        style = "bg:color_02 fg:color_05";
+        symbols = {
+          Alpaquita = " ";
+          Alpine = " ";
+          AlmaLinux = " ";
+          Amazon = " ";
+          Android = " ";
+          Arch = " ";
+          Artix = " ";
+          CachyOS = " ";
+          CentOS = " ";
+          Debian = " ";
+          DragonFly = " ";
+          Emscripten = " ";
+          EndeavourOS = " ";
+          Fedora = " ";
+          FreeBSD = " ";
+          Garuda = "󰛓 ";
+          Gentoo = " ";
+          HardenedBSD = "󰞌 ";
+          Illumos = "󰈸 ";
+          Kali = " ";
+          Linux = " ";
+          Mabox = " ";
+          Macos = " ";
+          Manjaro = " ";
+          Mariner = " ";
+          MidnightBSD = " ";
+          Mint = " ";
+          NetBSD = " ";
+          NixOS = " ";
+          Nobara = " ";
+          OpenBSD = "󰈺 ";
+          openSUSE = " ";
+          OracleLinux = "󰌷 ";
+          Pop = " ";
+          Raspbian = " ";
+          Redhat = " ";
+          RedHatEnterprise = " ";
+          RockyLinux = " ";
+          Redox = "󰀘 ";
+          Solus = "󰠳 ";
+          SUSE = " ";
+          Ubuntu = " ";
+          Unknown = " ";
+          Void = " ";
+          Windows = "󰍲 ";
+          };
+      };
+      # package.symbol = "󰏗 ";
+      # perl.symbol = " ";
+      # php.symbol = " ";
+      # pijul_channel.symbol = " ";
+      # python.symbol = " ";
+      # rlang.symbol = "󰟔 ";
+      # ruby.symbol = " ";
+      # rust.symbol = "󱘗 ";
+      # scala.symbol = " ";
+      # swift.symbol = " ";
+      # zig.symbol = " ";
+      # gradle.symbol = " ";
+
+      fill = {
+        style = "fg:color_01";
+        symbol = "·";
+      };
+
+      username = {
+        show_always = false;
+        style_user = "bg:color_03 fg:color_05";
+        style_root = "bg:color_03 fg:color_05";
+        format = "[ $user ]($style)";
+      };
+
+      c = {
+        symbol = " ";
+        inherit (lang) style format;
+      };
+
+      docker_context = {
+        symbol = " ";
+        inherit (container) style format;
+      };
+
+      elixir = {
+        symbol = " ";
+        inherit (lang) style format;
+      };
+
+      elm = {
+        symbol = " ";
+        inherit (lang) style format;
       };
 
       git_branch = {
-        symbol = "[](${background-alt}) ";
-        style = "fg:${accent} bg:${background-alt}";
-        format = "on [$symbol$branch]($style)[](${background-alt}) ";
+        symbol = "";
+        inherit (git) style;
+        format = "[[ $symbol $branch ](fg:color_01 bg:color_07)]($style)";
       };
 
       git_status = {
-        format =
-          "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218)($ahead_behind$stashed)]($style)";
-        style = "cyan";
-        conflicted = "";
-        renamed = "";
-        deleted = "";
-        stashed = "≡";
+        inherit (git) style format;
+        # format = "[[($all_status$ahead_behind )](fg:color_02 bg:color_11)]($style)";
       };
 
-      git_state = {
-        format = "([$state( $progress_current/$progress_total)]($style)) ";
-        style = "bright-black";
+      golang = {
+        symbol = " ";
+        inherit (lang) style format;
+      };
+
+      haskell = {
+        symbol = " ";
+        inherit (lang) style format;
+      };
+
+      java = {
+        symbol = " ";
+        inherit (lang) style format;
+      };
+
+      julia = {
+        symbol = " ";
+        inherit (lang) style format;
+      };
+
+      nodejs = {
+        symbol = "";
+        inherit (lang) style format;
+      };
+
+      nim = {
+        symbol = " ";
+        inherit (lang) style format;
+      };
+
+      nix_shell = {
+        symbol = "";
+        inherit (container) style format;
+      };
+
+      python = {
+        inherit (lang) style;
+        format = "[(\($virtualenv\) )]($style)";
+      };
+
+      rust = {
+        symbol = "";
+        inherit (lang) style format;
+      };
+
+      time = {
+        disabled = false;
+        time_format = "%R"; # Hour:Minute Format
+        style = "bg:color_02";
+        format = "[[  $time ](fg:color_10 bg:color_02)]($style)";
+      };
+
+      line_break = {
+        disabled = false;
+      };
+
+      character = {
+        disabled = false;
+        success_symbol = "[❯](bold fg:color_11)";
+        error_symbol = "[❯](bold fg:color_08)";
+        vimcmd_symbol = "[❮](bold fg:color_09)";
+        vimcmd_replace_one_symbol = "[❮](bold fg:color_14)";
+        vimcmd_replace_symbol = "[❮](bold fg:color_14)";
+        vimcmd_visual_symbol = "[❮](bold fg:color_13)";
       };
     };
   };

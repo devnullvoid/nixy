@@ -1,11 +1,14 @@
 # Hyprlock is a lockscreen for Hyprland
-{ config, lib, ... }:
+{ config, lib, pkgs, ... }:
 let
   foreground = "rgba(${config.theme.textColorOnWallpaper}ee)";
   font = config.stylix.fonts.serif.name;
+  
+
 in {
   programs.hyprlock = {
     enable = true;
+
     settings = {
       general = {
         grace = 5;
@@ -16,9 +19,11 @@ in {
       # BACKGROUND
       background = {
         monitor = "";
-        blur_passes = 0;
+        path = lib.mkForce "screenshot";  # Use built-in screenshot functionality
+        blur_passes = 3;      # Number of blur passes (higher = more blur)
+        blur_size = 7;        # Blur size (higher = more blur)
         contrast = 0.8916;
-        brightness = 0.7172;
+        brightness = 0.8;
         vibrancy = 0.1696;
         vibrancy_darkness = 0.0;
       };
