@@ -24,7 +24,11 @@
     ./nix-index.nix
     ./zellij.nix
     
+    # AI tools
+    ./ai-tools.nix
+    
     # Fish enhancements
+    # ./fish-abbreviations.nix
     ./fish-functions.nix
   ];
 }

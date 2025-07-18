@@ -20,6 +20,9 @@ in {
   programs.starship = {
     enable = true;
     settings = {
+      # Pipes ╰─ ╭─
+      # Powerline symbols                                     
+      # ┌ ─ │└ 
       add_newline = true;
       format = lib.concatStrings [
         "[](fg:color_02)"
@@ -29,7 +32,7 @@ in {
         "[](bg:color_07 fg:color_03)"
         "$git_branch$git_status"
         "[](fg:color_07 bg:color_14)"
-        "$c$rust$golang$nodejs$java$python$kotlin$dotnet$package"
+        "$c$rust$golang$nodejs$java$python$kotlin$dotnet$terraform$package"
         "[](fg:color_14 bg:color_15)"
         "$container"
         "$docker_context"
@@ -38,6 +41,7 @@ in {
         "[ ](fg:color_15)"
         "$fill"
         "[ ](fg:color_02)"
+        "$cmd_duration"
         "$time"
         "[](fg:color_02)"
         "$line_break$character"
@@ -84,7 +88,7 @@ in {
         style = "bg:color_03 fg:color_05";
         format = "[ $path ]($style)";
         truncation_length = 5;
-        truncation_symbol = "…/";
+        truncation_symbol = "󰝰 /";
         substitutions = {
           # "Documents" = "󰈙 ";
           # "Downloads" = "󰇚 ";
@@ -225,6 +229,11 @@ in {
         inherit (container) style format;
       };
 
+      dotnet = {
+        symbol = " ";
+        inherit (lang) style format;
+      };
+
       elixir = {
         symbol = " ";
         inherit (lang) style format;
@@ -247,12 +256,7 @@ in {
       };
 
       golang = {
-        symbol = " ";
-        inherit (lang) style format;
-      };
-
-      haskell = {
-        symbol = " ";
+        symbol = " ";
         inherit (lang) style format;
       };
 
@@ -261,39 +265,55 @@ in {
         inherit (lang) style format;
       };
 
-      julia = {
-        symbol = " ";
+      kotlin = {
+        symbol = " ";
         inherit (lang) style format;
       };
 
       nodejs = {
-        symbol = "";
-        inherit (lang) style format;
-      };
-
-      nim = {
-        symbol = " ";
+        symbol = " ";
         inherit (lang) style format;
       };
 
       nix_shell = {
-        symbol = "";
+        symbol = " ";
         inherit (container) style format;
       };
 
+      package = {
+        symbol = "󰏗 ";
+        inherit (lang) style format;
+      };
+
       python = {
+        symbol = " ";
         inherit (lang) style format;
         # format = "[(\($virtualenv\) )]($style)";
       };
 
-      rust = {
-        symbol = "";
+      terraform = {
+        symbol = "󱁢 ";
         inherit (lang) style format;
+      };
+
+      rust = {
+        symbol = " ";
+        inherit (lang) style format;
+      };
+
+      # Command duration module
+      cmd_duration = {
+        show_milliseconds = true;
+        format = "[   $duration  ]($style)";
+        style = "bg:color_02 fg:color_05 italic";
+        disabled = false;
+        show_notifications = true;
+        min_time_to_notify = 5000;
       };
 
       time = {
         disabled = false;
-        time_format = "%R"; # Hour:Minute Format
+        time_format = "%T"; # Hour:Minute Format
         style = "bg:color_02";
         format = "[[  $time ](fg:color_10 bg:color_02)]($style)";
       };

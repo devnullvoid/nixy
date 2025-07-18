@@ -33,6 +33,35 @@ in {
   programs.fish = {
     enable = true;
     
+    # Set fish colors using config.lib.stylix.colors
+    shellInit = ''
+      # Base colors from stylix
+      set -l base00 ${config.lib.stylix.colors.base00}
+      set -l base01 ${config.lib.stylix.colors.base01}
+      set -l base02 ${config.lib.stylix.colors.base02}
+      set -l base03 ${config.lib.stylix.colors.base03}
+      set -l base04 ${config.lib.stylix.colors.base04}
+      set -l base05 ${config.lib.stylix.colors.base05}
+      set -l base06 ${config.lib.stylix.colors.base06}
+      set -l base07 ${config.lib.stylix.colors.base07}
+      set -l base08 ${config.lib.stylix.colors.base08}
+      set -l base09 ${config.lib.stylix.colors.base09}
+      set -l base0A ${config.lib.stylix.colors.base0A}
+      set -l base0B ${config.lib.stylix.colors.base0B}
+      set -l base0C ${config.lib.stylix.colors.base0C}
+      set -l base0D ${config.lib.stylix.colors.base0D}
+      set -l base0E ${config.lib.stylix.colors.base0E}
+      set -l base0F ${config.lib.stylix.colors.base0F}
+      set -l base10 ${config.lib.stylix.colors.base10 or config.lib.stylix.colors.base01}  # Fallback to base01 if base10 not available
+      set -l base11 ${config.lib.stylix.colors.base11 or config.lib.stylix.colors.base00}  # Fallback to base00 if base11 not available
+      set -l base12 ${config.lib.stylix.colors.base12 or config.lib.stylix.colors.base08}  # Fallback to base08 if base12 not available
+      set -l base13 ${config.lib.stylix.colors.base13 or config.lib.stylix.colors.base06}  # Fallback to base06 if base13 not available
+      set -l base14 ${config.lib.stylix.colors.base14 or config.lib.stylix.colors.base0B}  # Fallback to base0B if base14 not available
+      set -l base15 ${config.lib.stylix.colors.base15 or config.lib.stylix.colors.base0C}  # Fallback to base0C if base15 not available
+      set -l base16 ${config.lib.stylix.colors.base16 or config.lib.stylix.colors.base0D}  # Fallback to base0D if base16 not available
+      set -l base17 ${config.lib.stylix.colors.base17 or config.lib.stylix.colors.base0E}  # Fallback to base0E if base17 not available
+    '';
+    
     interactiveShellInit = ''
       # Set fish greeting
       set fish_greeting
@@ -44,6 +73,34 @@ in {
       # set -g fish_cursor_replace_one block
       # set -g fish_cursor_visual block
       # set -g fish_cursor_external block
+      
+      # Set fish colors using stylix baseXX colors
+      set -g fish_color_normal $base05
+      set -g fish_color_command $base0D
+      set -g fish_color_param $base06
+      set -g fish_color_keyword $base0E
+      set -g fish_color_quote $base0B
+      set -g fish_color_redirection $base0E
+      set -g fish_color_end $base09
+      set -g fish_color_comment $base03
+      set -g fish_color_error $base08
+      set -g fish_color_gray $base04
+      set -g fish_color_selection --background=$base02
+      set -g fish_color_search_match --background=$base02
+      set -g fish_color_option $base0B
+      set -g fish_color_operator $base0E
+      set -g fish_color_escape $base0C
+      set -g fish_color_autosuggestion $base03
+      set -g fish_color_cancel $base08
+      set -g fish_color_cwd $base0A
+      set -g fish_color_user $base0C
+      set -g fish_color_host $base0D
+      set -g fish_color_host_remote $base0B
+      set -g fish_color_status $base08
+      set -g fish_pager_color_progress $base04
+      set -g fish_pager_color_prefix $base0E
+      set -g fish_pager_color_completion $base05
+      set -g fish_pager_color_description $base03
       
       # any-nix-shell integration for better nix-shell experience
       ${pkgs.any-nix-shell}/bin/any-nix-shell fish --info-right | source
@@ -71,6 +128,19 @@ in {
         set -gx SSH_AUTH_SOCK "$XDG_RUNTIME_DIR/gnupg/$gnupg_path/S.gpg-agent.ssh"
       ''}
     '';
+
+    plugins = [
+      # AI assistant for fish shell
+      {
+        name = "fish-ai";
+        src = pkgs.fetchFromGitHub {
+          owner = "Realiserad";
+          repo = "fish-ai";
+          rev = "main";
+          sha256 = "sha256-k4wK5RyJkPpw9MrO5GZKLJTAxc+4Ay4Ki3erCIJXfbU="; # You'll need to update this
+        };
+      }
+    ];
 
     functions = {
       sesh-sessions = {
@@ -179,6 +249,7 @@ in {
       nrsf = "sudo nixos-rebuild switch --flake .#";
       nrswf = "sudo nixos-rebuild switch --flake .# --show-trace";
       nrswq = "sudo nixos-rebuild switch --upgrade";
+      rebuild = "sudo nixos-rebuild switch --flake .#";
     };
 
     shellAbbrs = {
@@ -218,7 +289,6 @@ in {
       ndn = "sudo nixos-rebuild dry-run";
       nswf = "sudo nixos-rebuild switch --flake .#";
       nswq = "sudo nixos-rebuild switch --upgrade";
-      rebuild = "sudo nixos-rebuild switch --flake .#";
     };
   };
 } 
