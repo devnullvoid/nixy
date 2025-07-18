@@ -5,8 +5,8 @@ let
   # background-alt = "#${config.lib.stylix.colors.color_01}";
   colors = config.lib.stylix.colors;
   lang = {
-    style = "bg:color_13 fg:color_02";
-    format = "[ $symbol( $version) ]($style)";
+    style = "bg:color_14 fg:color_02";
+    format = "[ $symbol ($version) ]($style)";
   };
   git = {
     style = "bg:color_07 fg:color_02 italic";
@@ -28,9 +28,9 @@ in {
         "$directory"
         "[](bg:color_07 fg:color_03)"
         "$git_branch$git_status"
-        "[](fg:color_07 bg:color_13)"
+        "[](fg:color_07 bg:color_14)"
         "$c$rust$golang$nodejs$java$python$kotlin$dotnet$package"
-        "[](fg:color_13 bg:color_15)"
+        "[](fg:color_14 bg:color_15)"
         "$container"
         "$docker_context"
         "$nix_shell"
@@ -144,51 +144,51 @@ in {
         style = "bg:color_02 fg:color_05";
         symbols = {
           Alpaquita = "  ";
-          Alpine = "  ";
-          AlmaLinux = "  ";
-          Amazon = "  ";
-          Android = "  ";
-          Arch = "  ";
-          Artix = "  ";
-          CachyOS = "  ";
-          CentOS = "  ";
-          Debian = "  ";
+          Alpine = "  ";
+          AlmaLinux = "  ";
+          Amazon = "  ";
+          Android = "  ";
+          Arch = "  ";
+          Artix = "  ";
+          CachyOS = "  ";
+          CentOS = "  ";
+          Debian = "  ";
           DragonFly = "  ";
-          Emscripten = "  ";
-          EndeavourOS = "  ";
-          Fedora = "  ";
-          FreeBSD = "  ";
+          Emscripten = "  ";
+          EndeavourOS = "  ";
+          Fedora = "  ";
+          FreeBSD = "  ";
           Garuda = " 󰛓 ";
-          Gentoo = "  ";
+          Gentoo = "  ";
           HardenedBSD = " 󰞌 ";
           Illumos = " 󰈸 ";
-          Kali = "  ";
-          Linux = "  ";
+          Kali = "  ";
+          Linux = "  ";
           Mabox = "  ";
-          Macos = "  ";
-          Manjaro = "  ";
-          Mariner = "  ";
-          MidnightBSD = "  ";
-          Mint = "  ";
-          NetBSD = "  ";
-          NixOS = "  ";
-          Nobara = "  ";
+          Macos = "  ";
+          Manjaro = "  ";
+          Mariner = "  ";
+          MidnightBSD = "  ";
+          Mint = "  ";
+          NetBSD = "  ";
+          NixOS = "  ";
+          Nobara = "  ";
           OpenBSD = " 󰈺 ";
-          openSUSE = "  ";
+          openSUSE = "  ";
           OracleLinux = " 󰌷 ";
-          Pop = "  ";
-          Raspbian = "  ";
-          Redhat = "  ";
-          RedHatEnterprise = "  ";
-          RockyLinux = "  ";
+          Pop = "  ";
+          Raspbian = "  ";
+          Redhat = "  ";
+          RedHatEnterprise = "  ";
+          RockyLinux = "  ";
           Redox = " 󰀘 ";
           Solus = " 󰠳 ";
-          SUSE = "  ";
-          Ubuntu = "  ";
-          Unknown = "  ";
-          Void = "  ";
+          SUSE = "  ";
+          Ubuntu = "  ";
+          Unknown = "  ";
+          Void = "  ";
           Windows = " 󰍲 ";
-          };
+        };
       };
       # package.symbol = "󰏗 ";
       # perl.symbol = " ";
@@ -307,9 +307,9 @@ in {
         success_symbol = "[❯](bold fg:color_11)";
         error_symbol = "[❯](bold fg:color_08)";
         vimcmd_symbol = "[❮](bold fg:color_09)";
-        vimcmd_replace_one_symbol = "[❮](bold fg:color_14)";
-        vimcmd_replace_symbol = "[❮](bold fg:color_14)";
-        vimcmd_visual_symbol = "[❮](bold fg:color_13)";
+        vimcmd_replace_one_symbol = "[❮](bold fg:color_13)";
+        vimcmd_replace_symbol = "[❮](bold fg:color_13)";
+        vimcmd_visual_symbol = "[❮](bold fg:color_14)";
       };
     };
   };

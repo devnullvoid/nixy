@@ -218,6 +218,7 @@ in {
       ndn = "sudo nixos-rebuild dry-run";
       nswf = "sudo nixos-rebuild switch --flake .#";
       nswq = "sudo nixos-rebuild switch --upgrade";
+      rebuild = "sudo nixos-rebuild switch --flake .#";
     };
   };
 } 

@@ -16,6 +16,7 @@
       border-size = 2;
       animation-speed = "fast"; # "fast" | "medium" | "slow"
       fetch = "none"; # "nerdfetch" | "neofetch" | "pfetch" | "none"
+      accent = config.lib.stylix.colors.base0E; # Default accent color key from stylix
       textColorOnWallpaper =
         config.lib.stylix.colors.base05; # Color of the text displayed on the wallpaper (Lockscreen, display manager, ...)
 
@@ -49,8 +50,8 @@
         base0A = "f9e2af"; # yellow
         base0B = "a6e3a1"; # green
         base0C = "94e2d5"; # teal
-        base0E = "89b4fa"; # blue
-        base0D = "cba6f7"; # mauve
+        base0D = "89b4fa"; # blue
+        base0E = "cba6f7"; # mauve
         base0F = "f2cdcd"; # flamingo
         base10 = "181825"; # mantle - darker background
         base11 = "11111b"; # crust - darkest background
