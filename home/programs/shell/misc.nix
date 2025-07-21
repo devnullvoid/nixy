@@ -1,5 +1,12 @@
 { pkgs, ... }:
 {
+  home.packages = with pkgs; [ 
+    bat-extras.core
+    bat-extras.batwatch
+    bat-extras.batgrep
+    bat-extras.batman
+    bat-extras.batdiff
+  ];
   programs = {
     bat = {
       enable = true;

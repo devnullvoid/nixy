@@ -6,6 +6,7 @@ in {
   home.packages = with pkgs; [ 
     # Core shell tools
     ripgrep tldr sesh rmtrash trash-cli 
+    skim
 
     # Additional useful CLI tools from devnullvoid-nix
     any-nix-shell # for fish integration

@@ -108,8 +108,8 @@
 
       # Utils
       dua
-      zip
-      unzip
+      duf
+      zip unzip
       optipng
       jpegoptim
       pfetch
