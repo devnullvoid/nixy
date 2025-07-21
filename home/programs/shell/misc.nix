@@ -5,7 +5,7 @@
   programs = {
     bat = {
       enable = true;
-      extraPackages = with pkgs.bat-extras; [ core batdiff batman batgrep batwatch ];
+      extraPackages = with pkgs.bat-extras; [ batdiff batman batgrep batwatch ];
     };
     fd = {
       enable = true;
