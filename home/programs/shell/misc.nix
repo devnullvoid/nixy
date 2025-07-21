@@ -1,18 +1,23 @@
 { pkgs, ... }:
 {
   home.packages = with pkgs; [ 
-    bat-extras.core
-    bat-extras.batwatch
-    bat-extras.batgrep
-    bat-extras.batman
-    bat-extras.batdiff
   ];
   programs = {
     bat = {
       enable = true;
-      extraPackages = with pkgs.bat-extras; [ batdiff batman batgrep batwatch ];
+      extraPackages = with pkgs.bat-extras; [ core batdiff batman batgrep batwatch ];
+    };
+    fd = {
+      enable = true;
     };
     mods = {
+      enable = true;
+      enableFishIntegration = true;
+    };
+    ripgrep = {
+      enable = true;
+    };
+    skim = {
       enable = true;
       enableFishIntegration = true;
     };

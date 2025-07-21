@@ -5,12 +5,11 @@ in {
 
   home.packages = with pkgs; [ 
     # Core shell tools
-    ripgrep tldr sesh rmtrash trash-cli 
-    skim
+    tldr sesh rmtrash trash-cli 
 
     # Additional useful CLI tools from devnullvoid-nix
     any-nix-shell # for fish integration
-    fd # modern find replacement
+    # fd # modern find replacement
     jq # JSON processor
     yq-go # YAML processor
     glow # markdown previewer
