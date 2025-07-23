@@ -9,11 +9,11 @@
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/350cf109-5380-4982-8a9e-279a9275ee18";
+    device = "/dev/disk/by-label/nixos";
     fsType = "ext4";
   };
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/DD15-1125";
+    device = "/dev/disk/by-label/boot";
     fsType = "vfat";
     options = [ "fmask=0077" "dmask=0077" ];
   };

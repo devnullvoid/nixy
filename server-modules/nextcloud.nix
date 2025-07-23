@@ -1,11 +1,11 @@
 { pkgs, config, ... }:
-let domain = "cloud.hadi.diy";
+let domain = "cloud.${config.var.rootdomain}";
 in {
   services = {
     nginx.virtualHosts = {
       "${domain}" = {
         # DNS-01 challenge
-        useACMEHost = "hadi.diy";
+        useACMEHost = config.var.rootdomain;
         forceSSL = true;
       };
     };

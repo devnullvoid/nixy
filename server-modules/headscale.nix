@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 let
   derpPort = 3478;
-  domain = "hadi.diy";
+  domain = "nully.dev";
   headscale-ui-src = pkgs.fetchFromGitHub {
     owner = "gurucomputing";
     repo = "headscale-ui";

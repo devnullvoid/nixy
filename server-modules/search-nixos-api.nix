@@ -1,11 +1,11 @@
 { config, ... }:
-let domain = "search-nixos-api.hadi.diy";
+let domain = "search-nixos-api.${config.var.rootdomain}";
 in {
   services = {
     search-nixos-api = { enable = true; };
 
     nginx.virtualHosts."${domain}" = {
-      useACMEHost = "hadi.diy";
+      useACMEHost = config.var.rootdomain;
       forceSSL = true;
       locations."/" = {
         proxyPass =

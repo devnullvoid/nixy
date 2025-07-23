@@ -1,6 +1,6 @@
 { config, lib, ... }:
 let
-  domain = "start.hadi.diy";
+  domain = "start.${config.var.rootdomain}";
 
   rgb-to-hsl = color:
     let
@@ -77,8 +77,8 @@ in {
                 {
                   type = "dns-stats";
                   service = "adguard";
-                  url = "https://adguard.hadi.diy";
-                  username = "hadi";
+                  url = "https://adguard.nully.dev";
+                  username = "nully";
                   password = "\${secret:adguard-pwd}";
                 }
               ];
@@ -135,7 +135,7 @@ in {
                         }
                         {
                           title = "Search NixOS";
-                          url = "https://search-nixos.hadi.diy";
+                          url = "https://search-nixos.nully.dev";
                         }
                       ];
                     }
@@ -243,27 +243,27 @@ in {
                       sites = [
                         {
                           title = "Vaultwarden";
-                          url = "https://vault.hadi.diy";
+                          url = "https://vault.nully.dev";
                           icon = "si:bitwarden";
                         }
                         {
                           title = "Nextcloud";
-                          url = "https://cloud.hadi.diy";
+                          url = "https://cloud.nully.dev";
                           icon = "si:nextcloud";
                         }
                         {
                           title = "Adguard";
-                          url = "https://adguard.hadi.diy";
+                          url = "https://adguard.nully.dev";
                           icon = "si:adguard";
                         }
                         {
                           title = "Hoarder";
-                          url = "https://hoarder.hadi.diy";
+                          url = "https://hoarder.nully.dev";
                           icon = "si:bookstack";
                         }
                         {
                           title = "Mealie";
-                          url = "https://mealie.hadi.diy";
+                          url = "https://mealie.nully.dev";
                           icon = "si:mealie";
                         }
                       ];
@@ -275,37 +275,37 @@ in {
                       sites = [
                         {
                           title = "Jellyfin";
-                          url = "https://jellyfin.hadi.diy";
+                          url = "https://jellyfin.nully.dev";
                           icon = "si:jellyfin";
                         }
                         {
                           title = "Jellyseerr";
-                          url = "https://jellyseerr.hadi.diy";
+                          url = "https://jellyseerr.nully.dev";
                           icon = "si:odysee";
                         }
                         {
                           title = "Radarr";
-                          url = "https://radarr.hadi.diy";
+                          url = "https://radarr.nully.dev";
                           icon = "si:radarr";
                         }
                         {
                           title = "Sonarr";
-                          url = "https://sonarr.hadi.diy";
+                          url = "https://sonarr.nully.dev";
                           icon = "si:sonarr";
                         }
                         {
                           title = "Prowlarr";
-                          url = "https://prowlarr.hadi.diy";
+                          url = "https://prowlarr.nully.dev";
                           icon = "si:podcastindex";
                         }
                         {
                           title = "SABnzbd";
-                          url = "https://sabnzbd.hadi.diy";
+                          url = "https://sabnzbd.nully.dev";
                           icon = "si:sabanci";
                         }
                         {
                           title = "Transmission";
-                          url = "https://transmission.hadi.diy";
+                          url = "https://transmission.nully.dev";
                           icon = "si:transmission";
                         }
                       ];
@@ -321,7 +321,7 @@ in {
       };
     };
     nginx.virtualHosts."${domain}" = {
-      useACMEHost = "hadi.diy";
+      useACMEHost = config.var.rootdomain;
       forceSSL = true;
       locations."/" = {
         proxyPass = "http://127.0.0.1:${

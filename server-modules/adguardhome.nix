@@ -1,5 +1,5 @@
 { config, ... }:
-let domain = "adguard.hadi.diy";
+let domain = "adguard.${config.var.rootdomain}";
 in {
   services = {
     adguardhome = {
@@ -8,7 +8,7 @@ in {
     };
 
     nginx.virtualHosts."${domain}" = {
-      useACMEHost = "hadi.diy";
+      useACMEHost = config.var.rootdomain;
       forceSSL = true;
       locations."/" = {
         proxyPass =

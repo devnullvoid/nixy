@@ -1,5 +1,5 @@
 { config, ... }:
-let domain = "vault.hadi.diy";
+let domain = "vault.${config.var.rootdomain}";
 in {
   services = {
     vaultwarden = {
@@ -14,7 +14,7 @@ in {
     };
 
     nginx.virtualHosts."${domain}" = {
-      useACMEHost = "hadi.diy";
+      useACMEHost = config.var.rootdomain;
       forceSSL = true;
       locations."/" = {
         proxyPass = "http://127.0.0.1:${

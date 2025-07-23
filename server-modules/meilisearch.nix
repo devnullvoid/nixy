@@ -1,5 +1,5 @@
 { config, ... }:
-let domain = "meilisearch.hadi.diy";
+let domain = "meilisearch.${config.var.rootdomain}";
 in {
   services = {
     meilisearch = {
@@ -8,7 +8,7 @@ in {
       # masterKeyEnvironmentFile= "";
     };
     nginx.virtualHosts."${domain}" = {
-      useACMEHost = "hadi.diy";
+      useACMEHost = config.var.rootdomain;
       forceSSL = true;
       locations."/" = {
         proxyPass =

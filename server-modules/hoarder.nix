@@ -1,5 +1,5 @@
 { config, ... }:
-let domain = "hoarder.hadi.diy";
+let domain = "hoarder.${config.var.rootdomain}";
 in {
   systemd.tmpfiles.rules = [ 
     "d /var/lib/hoarder/web 0755 root root -" 
@@ -43,7 +43,7 @@ in {
     };
   };
   services.nginx.virtualHosts."${domain}" = {
-    useACMEHost = "hadi.diy";
+    useACMEHost = config.var.rootdomain;
     forceSSL = true;
     locations."/" = { proxyPass = "http://127.0.0.1:3131"; };
   };

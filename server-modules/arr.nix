@@ -1,5 +1,5 @@
 {config, ...}: let
-  domain = "hadi.diy";
+  domain = config.var.rootdomain;
   mkVirtualHost = port: {
     useACMEHost = domain;
     forceSSL = true;

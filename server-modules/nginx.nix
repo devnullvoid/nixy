@@ -6,9 +6,9 @@
     defaults.email = config.var.git.email;
   };
 
-  security.acme.certs."hadi.diy" = {
-    domain = "hadi.diy";
-    extraDomainNames = [ "*.hadi.diy" ];
+  security.acme.certs."${config.var.rootdomain}" = {
+    domain = config.var.rootdomain;
+    extraDomainNames = [ "*.${config.var.rootdomain}" ];
     group = "nginx";
 
     dnsProvider = "cloudflare";
@@ -21,13 +21,13 @@
       default = true;
       locations."/" = { return = 444; };
     };
-    "*.hadi.diy" = {
-      useACMEHost = "hadi.diy";
+    "*.${config.var.rootdomain}" = {
+      useACMEHost = config.var.rootdomain;
       forceSSL = true;
       locations."/" = { return = 444; };
     };
-    "aaaaaa.hadi.diy" = {
-      useACMEHost = "hadi.diy";
+    "aaaaaa.${config.var.rootdomain}" = {
+      useACMEHost = config.var.rootdomain;
       forceSSL = true;
       locations."/" = { return = 444; };
     };
