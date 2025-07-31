@@ -2,6 +2,7 @@
 {
   pkgs,
   inputs,
+  config,
   ...
 }: {
   imports = [
@@ -20,11 +21,15 @@
       DisableProfileImport = true;
       DisableSetDesktopBackground = true;
       DontCheckDefaultBrowser = true;
-      HomepageURL = "https://start.hadi.diy";
+      HomepageURL = "https://glance.devnullvoid.cloud";
       StartPage = "homepage";
       NewTabPage = true;
       OfferToSaveLogins = false;
       # find more options here: https://mozilla.github.io/policy-templates/
     };
+  };
+  stylix.targets.zen-browser = {
+    enable = true;
+    profileNames = [ config.var.username ];
   };
 }

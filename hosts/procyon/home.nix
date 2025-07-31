@@ -6,7 +6,7 @@
 }: {
   imports = [
     # Flake inputs
-    inputs.nix-index-database.hmModules.nix-index
+    inputs.nix-index-database.homeModules.nix-index
     
     # Mostly user-specific configuration
     ./variables.nix

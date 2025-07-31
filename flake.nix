@@ -9,7 +9,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
-    hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
+    # hyprpanel is now in nixpkgs, using that version instead
     stylix.url = "github:danth/stylix";
     apple-fonts.url = "github:Lyndeno/apple-fonts.nix";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
@@ -35,8 +35,11 @@
       inputs.hyprland.follows = "hyprland";
     };
     search-nixos-api.url = "github:anotherhadi/search-nixos-api";
-    nix-index-database.url = "github:nix-community/nix-index-database";
-    nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
   };
 
   outputs = inputs @ {nixpkgs, ...}: {
@@ -45,7 +48,6 @@
         nixpkgs.lib.nixosSystem {
           modules = [
             {
-              nixpkgs.overlays = [inputs.hyprpanel.overlay];
               _module.args = {inherit inputs;};
             }
             inputs.nixos-hardware.nixosModules.dell-latitude-5520 # CHANGEME: check https://github.com/NixOS/nixos-hardware
@@ -60,7 +62,6 @@
         nixpkgs.lib.nixosSystem {
           modules = [
             {
-              nixpkgs.overlays = [inputs.hyprpanel.overlay];
               _module.args = {inherit inputs;};
             }
             inputs.nixos-hardware.nixosModules.omen-16-n0005ne # CHANGEME: check https://github.com/NixOS/nixos-hardware
@@ -85,7 +86,6 @@
       nixvm = nixpkgs.lib.nixosSystem {
         modules = [
           {
-            nixpkgs.overlays = [inputs.hyprpanel.overlay];
             _module.args = {inherit inputs;};
           }
           inputs.home-manager.nixosModules.home-manager
