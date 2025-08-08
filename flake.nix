@@ -38,7 +38,7 @@
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
+      # Remove home-manager input as it's not needed
     };
   };
 

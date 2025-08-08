@@ -27,6 +27,12 @@
       OfferToSaveLogins = false;
       # find more options here: https://mozilla.github.io/policy-templates/
     };
+    profiles = {
+      "${config.var.username}" = {
+        isDefault = true;
+        extensions.force = true;
+      };
+    };
   };
   stylix.targets.zen-browser = {
     enable = true;
