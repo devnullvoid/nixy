@@ -1,5 +1,9 @@
-{ pkgs, config, inputs, ... }:
-let
+{
+  pkgs,
+  config,
+  inputs,
+  ...
+}: let
   hostname = config.var.hostname;
   keyboardLayout = config.var.keyboardLayout;
   configDir = config.var.configDirectory;
@@ -17,11 +21,11 @@ in {
     enable = autoUpgrade;
     dates = "04:00";
     flake = "${configDir}";
-    flags = [ "--update-input" "nixpkgs" "--commit-lock-file" ];
+    flags = ["--update-input" "nixpkgs" "--commit-lock-file"];
     allowReboot = false;
   };
 
-  time = { timeZone = timeZone; };
+  time = {timeZone = timeZone;};
   i18n.defaultLocale = defaultLocale;
   i18n.extraLocaleSettings = {
     LC_ADDRESS = extraLocale;
@@ -70,7 +74,7 @@ in {
     dbus = {
       enable = true;
       implementation = "broker";
-      packages = with pkgs; [ gcr gnome-settings-daemon ];
+      packages = with pkgs; [gcr gnome-settings-daemon];
     };
     gvfs.enable = true;
     upower.enable = true;
@@ -79,7 +83,7 @@ in {
   };
 
   # enable fish autocompletion for system packages (systemd, etc)
-  environment.pathsToLink = [ "/share/fish" ];
+  environment.pathsToLink = ["/share/fish"];
 
   # Faster rebuilding
   documentation = {
@@ -102,18 +106,35 @@ in {
     curl
     vim
     deskflow
-    sops  # for manual WiFi setup script
+    sops # for manual WiFi setup script
+    lsof
+    openssl
+    httpie
+    fping
+    ldns
+    tcping-go
+    netcat-gnu
+    socat
+    tcpdump
+    wireshark
+    tshark
+    iftop
+    nethogs
+    bandwhich
+    iotop
   ];
+
+  programs.wireshark.enable = true;
 
   xdg.portal = {
     enable = true;
     xdgOpenUsePortal = true;
     config = {
-      common.default = [ "gtk" ];
-      hyprland.default = [ "gtk" "hyprland" ];
+      common.default = ["gtk"];
+      hyprland.default = ["gtk" "hyprland"];
     };
 
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    extraPortals = [pkgs.xdg-desktop-portal-gtk];
   };
 
   security = {
@@ -127,8 +148,8 @@ in {
     sudo.wheelNeedsPassword = false;
   };
 
-  services.logind.extraConfig = ''
-    # don’t shutdown when power button is short-pressed
-    HandlePowerKey=ignore
-  '';
+  services.logind.settings.Login = {
+    # don't shutdown when power button is short-pressed
+    HandlePowerKey = "ignore";
+  };
 }

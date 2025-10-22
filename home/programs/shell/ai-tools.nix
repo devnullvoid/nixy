@@ -1,25 +1,27 @@
 # AI tools for the shell
-{ pkgs, config, ... }:
-
 {
+  pkgs,
+  config,
+  ...
+}: {
   home.packages = with pkgs; [
     # Amazon Q CLI - AWS AI assistant
     amazon-q-cli
-    
     # Google Gemini CLI
     gemini-cli
-    
     # Claude Code - Anthropic's coding assistant
     claude-code
+    # OpenAI Codex CLI
+    codex
   ];
 
   # Optional: Add any shell-specific configurations for these tools
   # For example, aliases or environment variables
   programs.fish.shellAliases = {
     # Quick access to AI tools
-    q = "amazon-q-cli";
-    gemini = "gemini-cli";
-    claude = "claude-code";
+    q = "amazon-q";
+    # gemini = "gemini-cli";
+    # claude = "claude-code";
   };
 
   # Optional: Add any environment variables needed for these tools
@@ -29,4 +31,4 @@
     # GEMINI_API_KEY = "your-key-here";    # Uncomment and set if needed
     # CLAUDE_API_KEY = "your-key-here";    # Uncomment and set if needed
   };
-} 
+}

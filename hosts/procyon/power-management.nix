@@ -18,14 +18,16 @@
 
   # Logind configuration for power button and lid switch behavior
   # Extend the existing configuration from utils.nix
-  services.logind.extraConfig = lib.mkAfter ''
-    # Lid switch behavior
-    HandleLidSwitch=suspend
-    HandleLidSwitchExternalPower=ignore
-    HandleLidSwitchDocked=ignore
-    IdleAction=ignore
-    IdleActionSec=0
-  '';
+  services.logind.settings.Login = lib.mkMerge [
+    {
+      # Lid switch behavior
+      HandleLidSwitch = "suspend";
+      HandleLidSwitchExternalPower = "ignore";
+      HandleLidSwitchDocked = "ignore";
+      IdleAction = "ignore";
+      IdleActionSec = "0";
+    }
+  ];
 
   # Systemd sleep configuration
   systemd.sleep.extraConfig = ''

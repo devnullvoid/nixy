@@ -1,7 +1,7 @@
 { pkgs, config, inputs, ... }: {
   imports = [
     # Flake inputs
-    inputs.nix-index-database.hmModules.nix-index
+    inputs.nix-index-database.homeModules.nix-index
     ./variables.nix
 
     # Essential programs for flake testing

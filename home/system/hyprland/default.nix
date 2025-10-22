@@ -15,6 +15,7 @@
   blur = config.theme.blur;
   keyboardLayout = config.var.keyboardLayout;
   background = "rgb(" + config.lib.stylix.colors.base00 + ")";
+  accent = "rgb(" + config.theme.accent + ")";
 in {
   imports = [
     ./animations.nix
@@ -119,6 +120,7 @@ in {
         gaps_out = gaps-out;
         border_size = border-size;
         layout = "master";
+        "col.active_border" = lib.mkForce accent;
         "col.inactive_border" = lib.mkForce background;
       };
 
@@ -146,7 +148,11 @@ in {
         mfact = 0.5;
       };
 
-      gestures = {workspace_swipe = true;};
+      # gestures = {
+      #   workspace_swipe = {
+      #     enable = true;
+      #   };
+      # };
 
       misc = {
         vfr = true;

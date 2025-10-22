@@ -40,23 +40,36 @@
       inputs.nixpkgs.follows = "nixpkgs";
       # Remove home-manager input as it's not needed
     };
+    dgop = {
+      url = "github:AvengeMedia/dgop";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    dms-cli = {
+      url = "github:AvengeMedia/danklinux";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    dankMaterialShell = {
+      url = "github:AvengeMedia/DankMaterialShell";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.dgop.follows = "dgop";
+      inputs.dms-cli.follows = "dms-cli";
+    };
   };
 
   outputs = inputs @ {nixpkgs, ...}: {
     nixosConfigurations = {
-      procyon =
-        nixpkgs.lib.nixosSystem {
-          modules = [
-            {
-              _module.args = {inherit inputs;};
-            }
-            inputs.nixos-hardware.nixosModules.dell-latitude-5520 # CHANGEME: check https://github.com/NixOS/nixos-hardware
-            inputs.home-manager.nixosModules.home-manager
-            inputs.stylix.nixosModules.stylix
-            inputs.sops-nix.nixosModules.sops
-            ./hosts/procyon/configuration.nix # CHANGEME: change the path to match your host folder
-          ];
-        };
+      procyon = nixpkgs.lib.nixosSystem {
+        modules = [
+          {
+            _module.args = {inherit inputs;};
+          }
+          inputs.nixos-hardware.nixosModules.dell-latitude-5520 # CHANGEME: check https://github.com/NixOS/nixos-hardware
+          inputs.home-manager.nixosModules.home-manager
+          inputs.stylix.nixosModules.stylix
+          inputs.sops-nix.nixosModules.sops
+          ./hosts/procyon/configuration.nix # CHANGEME: change the path to match your host folder
+        ];
+      };
       nixy =
         # CHANGEME: This should match the 'hostname' in your variables.nix file
         nixpkgs.lib.nixosSystem {
@@ -93,7 +106,6 @@
           ./hosts/nixvm/configuration.nix
         ];
       };
-
     };
   };
 }

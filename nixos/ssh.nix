@@ -1,13 +1,15 @@
 # SSH service configuration for desktop systems
-{ config, ... }: {
+{config, ...}: {
   services.openssh = {
     enable = true;
-    ports = [ 22 ];
+    ports = [22];
     openFirewall = true;
     settings = {
       PermitRootLogin = "no";
       PasswordAuthentication = false;
-      AllowUsers = [ config.var.username ];
+      AllowUsers = [config.var.username];
+      AcceptEnv = "Q_SET_PARENT";
+      AllowStreamLocalForwarding = "yes";
     };
   };
 
@@ -17,4 +19,4 @@
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHkkp4yJcYNvDdzWfpHH5ZCeRrGRvL7fT18IJprgImVq jon@procyon"
     ];
   };
-} 
+}

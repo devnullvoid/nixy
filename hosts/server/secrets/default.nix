@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{pkgs, config, ...}: {
   sops = {
     age.keyFile = "/home/${config.var.username}/.config/sops/age/keys.txt";
     defaultSopsFile = ./secrets.yaml;

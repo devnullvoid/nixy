@@ -7,7 +7,8 @@
   imports = [
     # Flake inputs
     inputs.nix-index-database.homeModules.nix-index
-    
+    inputs.dankMaterialShell.homeModules.dankMaterialShell.default
+
     # Mostly user-specific configuration
     ./variables.nix
 
@@ -59,15 +60,12 @@
   stylix.iconTheme = {
     enable = true;
     package = pkgs.colloid-icon-theme.override {
-      schemeVariants = [ "catppuccin" ];
-      colorVariants = [ "purple" ];
-      };
-     light = "Colloid-Purple-Catppuccin-Light";
-     dark = "Colloid-Purple-Catppuccin-Dark";
+      schemeVariants = ["catppuccin"];
+      colorVariants = ["purple"];
     };
-
-    
-
+    light = "Colloid-Purple-Catppuccin-Light";
+    dark = "Colloid-Purple-Catppuccin-Dark";
+  };
 
   home = {
     inherit (config.var) username;
@@ -89,6 +87,8 @@
       mpv # Video player
       figma-linux
 
+      winbox4
+
       # Dev
       go
       bun
@@ -109,7 +109,8 @@
       # Utils
       dua
       duf
-      zip unzip
+      zip
+      unzip
       optipng
       jpegoptim
       pfetch

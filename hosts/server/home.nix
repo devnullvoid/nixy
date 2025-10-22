@@ -1,6 +1,9 @@
-{ pkgs, config, ... }: {
+{ pkgs, config, inputs, ... }: {
 
   imports = [
+    # Flake inputs
+    inputs.nix-index-database.homeModules.nix-index
+    
     # Mostly user-specific configuration
     ./variables.nix
 
