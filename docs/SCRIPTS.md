@@ -22,6 +22,8 @@ Caffeine is a simple script that toggles hypridle (disable suspend & screenlock)
 
 
 
+
+
 ## Hyprfocus
 
 A simple script to toggle focus on few windows in Hyprland.
