@@ -11,7 +11,7 @@ let
   hyprfocus-on = pkgs.writeShellScriptBin "hyprfocus-on"
     # bash
     ''
-      hyprpanel-hide
+      dms-hide
 
       hyprctl --batch "\
           keyword animations:enabled 0;\
@@ -31,7 +31,7 @@ let
     # bash
     ''
       hyprctl reload
-      hyprpanel-show
+      dms-show
       rm /tmp/hyprfocus
     '';
 

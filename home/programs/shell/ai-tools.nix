@@ -13,6 +13,9 @@
     claude-code
     # OpenAI Codex CLI
     codex
+    crush
+    opencode
+    goose-cli
   ];
 
   # Optional: Add any shell-specific configurations for these tools

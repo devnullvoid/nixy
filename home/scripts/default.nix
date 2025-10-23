@@ -4,7 +4,7 @@
     ./sounds
     ./brightness
     ./caffeine
-    ./hyprpanel
+    ./dms
     ./hyprfocus
     ./night-shift
     ./screenshot

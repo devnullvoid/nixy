@@ -5,10 +5,19 @@
       "$mod,E, exec, ${pkgs.xfce.thunar}/bin/thunar" # Thunar
       "$mod,B, exec, zen-beta" # Zen Browser
       "$mod,K, exec, ${pkgs.bitwarden}/bin/bitwarden" # Bitwarden
-      "$mod,L, exec, ${pkgs.hyprlock}/bin/hyprlock" # Lock
-      "$mod,X, exec, powermenu" # Powermenu
-      "$mod,SPACE, exec, menu" # Launcher
-      "$mod,C, exec, quickmenu" # Quickmenu
+      "SUPERALT,L, exec, dms ipc call lock lock" # Lock
+      "$mod,SPACE, exec, dms ipc call spotlight toggle"
+      "$mod,C, exec, dms ipc call control-center toggle"
+      "$mod,X, exec, dms ipc call powermenu toggle"
+      "$shiftMod,C, exec, dms ipc call clipboard toggle"
+      "$mod,V, exec, dms ipc call clipboard toggle"
+      "$mod,M, exec, dms ipc call processlist toggle"
+      "$mod,N, exec, dms ipc call notifications toggle"
+      "$mod,comma, exec, dms ipc call settings toggle"
+      "$mod,P, exec, dms ipc call notepad toggle"
+      "$mod,Y, exec, dms ipc call dankdash wallpaper"
+      "$mod,TAB, exec, dms ipc call hypr toggleOverview"
+      "$shiftMod,N, exec, dms ipc call night toggle"
       "$shiftMod,SPACE, exec, hyprfocus-toggle" # Toggle HyprFocus
       # "$mod,P, exec,  uwsm app -- ${pkgs.planify}/bin/io.github.alainm23.planify" # Planify
 
@@ -29,8 +38,6 @@
       "$shiftMod,PRINT, exec, screenshot window" # Screenshot window
       "ALT,PRINT, exec, screenshot region swappy" # Screenshot region then edit
 
-      "$shiftMod,T, exec, hyprpanel-toggle" # Toggle hyprpanel
-      "$shiftMod,C, exec, clipboard" # Clipboard picker with wofi
       "$shiftMod,E, exec, ${pkgs.wofi-emoji}/bin/wofi-emoji" # Emoji picker with wofi
       "$mod,F2, exec, night-shift" # Toggle night shift
       "$mod,F3, exec, night-shift" # Toggle night shift
@@ -47,18 +54,18 @@
     ];
 
     bindl = [
-      ",XF86AudioMute, exec, sound-toggle" # Toggle Mute
+      ",XF86AudioMute, exec, dms ipc call audio mute" # Toggle Mute
       ",XF86AudioPlay, exec, ${pkgs.playerctl}/bin/playerctl play-pause" # Play/Pause Song
       ",XF86AudioNext, exec, ${pkgs.playerctl}/bin/playerctl next" # Next Song
       ",XF86AudioPrev, exec, ${pkgs.playerctl}/bin/playerctl previous" # Previous Song
-      ",switch:Lid Switch, exec, ${pkgs.hyprlock}/bin/hyprlock" # Lock when closing Lid
+      ",switch:Lid Switch, exec, dms ipc call lock lock" # Lock when closing Lid
     ];
 
     bindle = [
-      ",XF86AudioRaiseVolume, exec, sound-up" # Sound Up
-      ",XF86AudioLowerVolume, exec, sound-down" # Sound Down
-      ",XF86MonBrightnessUp, exec, brightness-up" # Brightness Up
-      ",XF86MonBrightnessDown, exec, brightness-down" # Brightness Down
+      ",XF86AudioRaiseVolume, exec, dms ipc call audio increment 3" # Sound Up
+      ",XF86AudioLowerVolume, exec, dms ipc call audio decrement 3" # Sound Down
+      ",XF86MonBrightnessUp, exec, dms ipc call brightness increment 5 \"\"" # Brightness Up
+      ",XF86MonBrightnessDown, exec, dms ipc call brightness decrement 5 \"\"" # Brightness Down
     ];
 
   };
