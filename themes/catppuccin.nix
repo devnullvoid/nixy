@@ -2,6 +2,7 @@
   lib,
   pkgs,
   config,
+  inputs,
   ...
 }: {
   options.theme = lib.mkOption {
@@ -92,10 +93,7 @@
       };
 
       polarity = "dark";
-      image = pkgs.fetchurl {
-        url = "https://raw.githubusercontent.com/orangci/walls-catppuccin-mocha/master/cat-vibin.png";
-        sha256 = "sha256-Hg27Gp4JBrYIC5B1Uaz8QkUskwD3pBhgEwE1FW7VBYo=";
-      };
+      image = inputs.wallpkgs.wallpapers.catppuccin."catppuccin-cat-vibin".path;
     };
   };
 }

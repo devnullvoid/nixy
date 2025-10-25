@@ -27,7 +27,7 @@ in {
     settings = {
 
       general = {
-        ignore_dbus_inhibit = false;
+        ignore_dbus_inhibit = lib.mkForce true;
         lock_cmd = "pidof hyprlock || ${pkgs.hyprlock}/bin/hyprlock";
         before_sleep_cmd = "loginctl lock-session";
         after_sleep_cmd = "hyprctl dispatch dpms on";

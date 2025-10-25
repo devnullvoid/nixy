@@ -75,7 +75,7 @@ in {
         "systemctl --user enable --now hyprpaper.service &"
         "systemctl --user enable --now hypridle.service &"
         "bash -c \"wl-paste --watch cliphist store &\""
-        "dms run"
+        "systemctl --user start dms.service"
         #"systemctl --user enable --now nextcloud-client.service  &"
       ];
 

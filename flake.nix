@@ -54,6 +54,7 @@
       inputs.dgop.follows = "dgop";
       inputs.dms-cli.follows = "dms-cli";
     };
+    wallpkgs.url = "github:NotAShelf/wallpkgs";
   };
 
   outputs = inputs @ {nixpkgs, ...}: {

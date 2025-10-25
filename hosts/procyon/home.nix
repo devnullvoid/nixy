@@ -66,7 +66,11 @@
     dark = "Colloid-Purple-Catppuccin-Dark";
   };
 
-  home = {
+  home =
+    let
+      wallpaperSample = inputs.wallpkgs.wallpapers.catppuccin."catppuccin-cat-vibin".path;
+      wallpaperRoot = builtins.dirOf (builtins.dirOf wallpaperSample);
+    in {
     inherit (config.var) username;
     homeDirectory = "/home/" + config.var.username;
 
@@ -144,8 +148,13 @@
       TERM = "kitty";
     };
 
-    # Import my profile picture, used by the hyprpanel dashboard
-    file.".face.icon" = {source = ./profile_picture.png;};
+    file = {
+      ".face.icon" = {source = ./profile_picture.png;};
+      "Pictures/wallpapers" = {
+        source = wallpaperRoot;
+        recursive = true;
+      };
+    };
 
     # Don't touch this
     stateVersion = "25.05";
