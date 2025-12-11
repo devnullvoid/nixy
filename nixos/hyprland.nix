@@ -1,14 +1,13 @@
 { inputs, config, pkgs, lib, ... }:
 let
-  # Use the latest stable Hyprland from nixpkgs
-  # hyprlandPackage = pkgs.hyprland;
+  system = pkgs.stdenv.hostPlatform.system;
+  hyprlandPackage = inputs.hyprland.packages.${system}.hyprland;
 in {
   # Enable Hyprland
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
-    # Use stable version from nixpkgs instead of input
-    package = pkgs.hyprland;
+    package = hyprlandPackage;
     portalPackage = pkgs.xdg-desktop-portal-hyprland;
   };
 

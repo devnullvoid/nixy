@@ -1,6 +1,6 @@
 # Hyprpanel is the bar on top of the screen
 # Display information like workspaces, battery, wifi, ...
-{config, ...}: let
+{config, lib, ...}: let
   transparentButtons = config.theme.bar.transparentButtons;
 
   accent = "#${config.theme.accent}";
@@ -28,7 +28,7 @@
 in {
   wayland.windowManager.hyprland.settings.exec-once = ["hyprpanel"];
 
-  programs.hyprpanel = {
+  programs.hyprpanel = lib.mkForce {
     enable = true;
 
     settings = {

@@ -1,7 +1,8 @@
 # Spicetify is a spotify client customizer
 { pkgs, config, lib, inputs, ... }:
 let
-  spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
+  system = pkgs.stdenv.hostPlatform.system;
+  spicePkgs = inputs.spicetify-nix.legacyPackages.${system};
   accent = "#${config.theme.accent}";
   background = "${config.lib.stylix.colors.base00}";
 in {

@@ -1,5 +1,4 @@
-{ pkgs, ... }: {
-
+{pkgs, ...}: {
   fonts = {
     packages = with pkgs; [
       roboto
@@ -14,7 +13,8 @@
       dejavu_fonts
       noto-fonts
       noto-fonts-cjk-sans
-      noto-fonts-emoji
+      # noto-fonts-emoji
+      noto-fonts-color-emoji
       nerd-fonts.fira-code
       nerd-fonts.meslo-lg
       nerd-fonts.jetbrains-mono

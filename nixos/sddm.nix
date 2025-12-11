@@ -45,6 +45,7 @@ let
       HighlightBackgroundColor = "#${foreground}";
     };
   };
+  system = pkgs.stdenv.hostPlatform.system;
 in {
   services.displayManager = {
     sddm = {
@@ -55,7 +56,7 @@ in {
       theme = "sddm-astronaut-theme";
       settings = {
         Wayland.SessionDir = "${
-            inputs.hyprland.packages."${pkgs.system}".hyprland
+            inputs.hyprland.packages.${system}.hyprland
           }/share/wayland-sessions";
       };
     };

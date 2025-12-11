@@ -7,7 +7,7 @@
   imports = [
     # Flake inputs
     inputs.nix-index-database.homeModules.nix-index
-    
+
     # Mostly user-specific configuration
     ./variables.nix
 
@@ -52,7 +52,7 @@
 
     packages = with pkgs; [
       # Apps
-      bitwarden # Password manager
+      bitwarden-desktop # Password manager
       vlc # Video player
       blanket # White-noise app
       obsidian # Note taking app

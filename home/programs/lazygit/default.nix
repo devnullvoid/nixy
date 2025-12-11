@@ -1,8 +1,15 @@
 # Lazygit is a simple terminal UI for git commands.
 { config, lib, ... }:
 let
-  accent = "#${config.theme.accent}";
-  muted = "#${config.lib.stylix.colors.base03}";
+  stylixColors = lib.attrByPath [ "lib" "stylix" "colors" ] {} config;
+  baseColor = name: default:
+    let value = lib.attrByPath [ name ] default stylixColors;
+    in if builtins.isString value then value else default;
+  accent =
+    if lib.hasAttrByPath [ "theme" "accent" ] config then
+      "#${config.theme.accent}"
+    else "#${baseColor "base08" "89b4fa"}";
+  muted = "#${baseColor "base03" "6c7086"}";
 in {
   programs.lazygit = {
     enable = true;

@@ -86,10 +86,10 @@
   };
 
   # Reduce systemd service timeouts
-  systemd.extraConfig = ''
-    DefaultTimeoutStartSec=30s
-    DefaultTimeoutStopSec=10s
-  '';
+  systemd.settings.Manager = {
+    DefaultTimeoutStartSec = "30s";
+    DefaultTimeoutStopSec = "10s";
+  };
 
   # Optimize memory management
   boot.kernel.sysctl = {

@@ -66,17 +66,16 @@
     dark = "Colloid-Purple-Catppuccin-Dark";
   };
 
-  home =
-    let
-      wallpaperSample = inputs.wallpkgs.wallpapers.catppuccin."catppuccin-cat-vibin".path;
-      wallpaperRoot = builtins.dirOf (builtins.dirOf wallpaperSample);
-    in {
+  home = let
+    wallpaperSample = inputs.wallpkgs.wallpapers.catppuccin."catppuccin-cat-vibin".path;
+    wallpaperRoot = builtins.dirOf (builtins.dirOf wallpaperSample);
+  in {
     inherit (config.var) username;
     homeDirectory = "/home/" + config.var.username;
 
     packages = with pkgs; [
       # Apps
-      bitwarden # Password manager
+      bitwarden-desktop # Password manager
       vlc # Video player
       blanket # White-noise app
       obsidian # Note taking app

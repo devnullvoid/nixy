@@ -1,11 +1,15 @@
-# VM-specific Hyprland configuration using nixpkgs instead of building from source
-# This is much faster for VM testing while maintaining flake compatibility
-{ pkgs, ... }: {
+# VM-specific Hyprland configuration using the Hyprland flake input
+# Keeps plugin compatibility (Hyprspace) while still applying VM tweaks
+{ pkgs, inputs, ... }:
+let
+  system = pkgs.stdenv.hostPlatform.system;
+  hyprlandPkg = inputs.hyprland.packages.${system}.hyprland;
+in {
   programs.hyprland = {
     enable = true;
     withUWSM = true;
-    # Use nixpkgs version instead of building from source for faster builds
-    package = pkgs.hyprland;
+    # Use the flake input so Hyprspace matches Hyprland exactly
+    package = hyprlandPkg;
     portalPackage = pkgs.xdg-desktop-portal-hyprland;
   };
   

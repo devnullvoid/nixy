@@ -1,8 +1,10 @@
-{ pkgs, inputs, ... }: {
+{ pkgs, inputs, ... }: let
+  system = pkgs.stdenv.hostPlatform.system;
+in {
   programs.anyrun = {
     enable = true;
     config = {
-      plugins = with inputs.anyrun.packages.${pkgs.system}; [
+      plugins = with inputs.anyrun.packages.${system}; [
         applications
         shell
         randr

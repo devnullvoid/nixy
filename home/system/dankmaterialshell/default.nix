@@ -2,7 +2,7 @@
 {
   programs.dankMaterialShell = {
     enable = true;
-    enableSystemd = true;
+    systemd.enable = true;
     enableSystemMonitoring = true;
     enableClipboard = true;
     enableVPN = true;
@@ -13,9 +13,7 @@
     enableCalendarEvents = true;
     enableSystemSound = true;
 
-    default = {
-      settings = {};
-      session = {};
-    };
+    default.settings = {};
+    default.session = {};
   };
 }

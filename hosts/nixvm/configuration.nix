@@ -8,7 +8,7 @@
     ../../nixos/sddm.nix
     ../../nixos/users.nix
     ../../nixos/utils.nix
-    ./hyprland-nixpkgs.nix  # VM-specific Hyprland using nixpkgs
+    ./hyprland-nixpkgs.nix  # VM-specific Hyprland using the flake input
     ../../nixos/nix-ld.nix
     ../../nixos/ssh.nix
 
