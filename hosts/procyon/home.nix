@@ -45,6 +45,7 @@
     ../../home/system/hypridle
     ../../home/system/hyprlock
     ../../home/system/dankmaterialshell
+    ../../home/system/niri
     ../../home/system/hyprpaper
     ../../home/system/wofi
     ../../home/system/zathura

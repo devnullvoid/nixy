@@ -1,4 +1,10 @@
-{ inputs, config, pkgs, lib, ... }:
+{
+  inputs,
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 let
   system = pkgs.stdenv.hostPlatform.system;
   hyprlandPackage = inputs.hyprland.packages.${system}.hyprland;
@@ -96,4 +102,8 @@ in {
       TimeoutStopSec = 10;
     };
   };
+
+  environment.systemPackages = lib.mkAfter [
+    pkgs.niri
+  ];
 }

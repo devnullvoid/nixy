@@ -55,14 +55,25 @@ in {
       wayland.enable = true;
       theme = "sddm-astronaut-theme";
       settings = {
-        Wayland.SessionDir = "${
-            inputs.hyprland.packages.${system}.hyprland
-          }/share/wayland-sessions";
+        Wayland.SessionDir = "/etc/wayland-sessions";
       };
     };
   };
 
   environment.systemPackages = [ sddm-astronaut ];
+
+  environment.etc."wayland-sessions/hyprland.desktop".source =
+    "${inputs.hyprland.packages.${system}.hyprland}/share/wayland-sessions/hyprland.desktop";
+
+  environment.etc."wayland-sessions/niri.desktop".text = ''
+    [Desktop Entry]
+    Name=Niri
+    Comment=Wayland compositor focused on ergonomics
+    Exec=${pkgs.niri}/bin/niri --config ~/.config/niri/config.kdl
+    Type=Application
+    DesktopNames=Niri
+    Categories=System;X-WindowManager;
+  '';
 
   # To prevent getting stuck at shutdown
   # systemd.extraConfig = "DefaultTimeoutStopSec=10s";
