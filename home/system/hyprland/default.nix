@@ -22,7 +22,7 @@ in {
     ./bindings.nix
     ./polkitagent.nix
     # ./keyboard-backlight.nix # CHANGEME: This is for my laptop only
-    ./hyprspace.nix
+    # ./hyprspace.nix # Temporarily disabled: incompatible with current Hyprland
   ];
 
   home.packages = with pkgs; [

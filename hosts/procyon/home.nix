@@ -7,7 +7,7 @@
   imports = [
     # Flake inputs
     inputs.nix-index-database.homeModules.nix-index
-    inputs.dankMaterialShell.homeModules.dankMaterialShell.default
+    inputs.dankMaterialShell.homeModules.dank-material-shell
 
     # Mostly user-specific configuration
     ./variables.nix
@@ -57,7 +57,7 @@
 
   programs.home-manager.enable = true;
 
-  stylix.iconTheme = {
+  stylix.icons = {
     enable = true;
     package = pkgs.colloid-icon-theme.override {
       schemeVariants = ["catppuccin"];

@@ -8,7 +8,7 @@
       PermitRootLogin = "no";
       PasswordAuthentication = false;
       AllowUsers = [config.var.username];
-      AcceptEnv = "Q_SET_PARENT";
+      AcceptEnv = ["Q_SET_PARENT"];
       AllowStreamLocalForwarding = "yes";
     };
   };
