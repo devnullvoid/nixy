@@ -130,16 +130,17 @@ in {
     '';
 
     plugins = [
-      # AI assistant for fish shell
-      {
-        name = "fish-ai";
-        src = pkgs.fetchFromGitHub {
-          owner = "Realiserad";
-          repo = "fish-ai";
-          rev = "main";
-          sha256 = "sha256-k4wK5RyJkPpw9MrO5GZKLJTAxc+4Ay4Ki3erCIJXfbU="; # You'll need to update this
-        };
-      }
+      # AI assistant for fish shell - DISABLED: uses deprecated 'bind -k' syntax
+      # See: https://github.com/Realiserad/fish-ai/issues
+      # {
+      #   name = "fish-ai";
+      #   src = pkgs.fetchFromGitHub {
+      #     owner = "Realiserad";
+      #     repo = "fish-ai";
+      #     rev = "main";
+      #     sha256 = "sha256-k4wK5RyJkPpw9MrO5GZKLJTAxc+4Ay4Ki3erCIJXfbU=";
+      #   };
+      # }
     ];
 
     functions = {
