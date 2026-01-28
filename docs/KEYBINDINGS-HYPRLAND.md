@@ -8,14 +8,22 @@
 | -- | -- |
 | Switch Workspace | SUPER + {Number} |
 | Move app to Workspace | SHIFT + SUPER + {Number} |
-| Kitty | SUPER + RETURN |
 | Thunar | SUPER + E |
 | Zen Browser | SUPER + B |
 | Bitwarden | SUPER + K |
-| Lock | SUPER + L |
-| Powermenu | SUPER + X |
-| Launcher | SUPER + SPACE |
-| Quickmenu | SUPER + C |
+| Lock | SUPERALTL |
+| $mod,SPACE, exec, dms ipc call spotlight toggle" | SUPER + SPACE |
+| $mod,C, exec, dms ipc call control-center toggle" | SUPER + C |
+| $mod,X, exec, dms ipc call powermenu toggle" | SUPER + X |
+| $shiftMod,C, exec, dms ipc call clipboard toggle" | SHIFT + SUPER + C |
+| $mod,V, exec, dms ipc call clipboard toggle" | SUPER + V |
+| $mod,M, exec, dms ipc call processlist toggle" | SUPER + M |
+| $mod,N, exec, dms ipc call notifications toggle" | SUPER + N |
+| $mod,comma, exec, dms ipc call settings toggle" | SUPER + comma |
+| $mod,P, exec, dms ipc call notepad toggle" | SUPER + P |
+| $mod,Y, exec, dms ipc call dankdash wallpaper" | SUPER + Y |
+| $mod,TAB, exec, dms ipc call hypr toggleOverview" | SUPER + TAB |
+| $shiftMod,N, exec, dms ipc call night toggle" | SHIFT + SUPER + N |
 | Toggle HyprFocus | SHIFT + SUPER + SPACE |
 | "$mod,P, exec,  uwsm app -- ${pkgs.planify}/bin/io.github.alainm23.planify"  |  |
 | Close window | SUPER + Q |
@@ -33,8 +41,6 @@
 | Screenshot monitor | PRINT |
 | Screenshot window | SHIFT + SUPER + PRINT |
 | Screenshot region then edit | ALTPRINT |
-| Toggle hyprpanel | SHIFT + SUPER + T |
-| Clipboard picker with wofi | SHIFT + SUPER + C |
 | Emoji picker with wofi | SHIFT + SUPER + E |
 | Toggle night shift | SUPER + F2 |
 | Toggle night shift | SUPER + F3 |
