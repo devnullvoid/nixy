@@ -30,14 +30,12 @@
   ];
 
   # Systemd sleep configuration
-  systemd.sleep.extraConfig = ''
-    # Prevent system from suspending when on AC power
-    # This is handled by our smart-suspend script in hypridle
-    AllowSuspend=yes
-    AllowHibernation=no
-    AllowSuspendThenHibernate=no
-    AllowHybridSleep=no
-  '';
+  systemd.sleep.settings.Sleep = {
+    AllowSuspend = "yes";
+    AllowHibernation = "no";
+    AllowSuspendThenHibernate = "no";
+    AllowHybridSleep = "no";
+  };
 
   # CPU frequency scaling
   boot.kernelModules = [ "cpufreq_ondemand" "cpufreq_powersave" ];
@@ -69,4 +67,4 @@
 
   # Thermald for thermal management
   services.thermald.enable = true;
-} 
+}
