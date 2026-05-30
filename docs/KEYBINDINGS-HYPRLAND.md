@@ -35,8 +35,6 @@
 | Move focus Down | SUPER + down |
 | Focus previous monitor | SHIFT + SUPER + up |
 | Focus next monitor | SHIFT + SUPER + down |
-| Add to master | SHIFT + SUPER + left |
-| Remove from master | SHIFT + SUPER + right |
 | Screenshot region | SUPER + PRINT |
 | Screenshot monitor | PRINT |
 | Screenshot window | SHIFT + SUPER + PRINT |
