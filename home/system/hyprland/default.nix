@@ -122,7 +122,7 @@ in {
         gaps_in = gaps-in;
         gaps_out = gaps-out;
         border_size = border-size;
-        layout = "master";
+        layout = "dwindle";
         "col.active_border" = lib.mkForce accent;
         "col.inactive_border" = lib.mkForce background;
       };
@@ -145,11 +145,6 @@ in {
         };
       };
 
-      master = {
-        new_status = true;
-        allow_small_split = true;
-        mfact = 0.5;
-      };
 
       # gestures = {
       #   workspace_swipe = {
@@ -158,15 +153,11 @@ in {
       # };
 
       misc = {
-        vfr = true;
         disable_hyprland_logo = true;
-        disable_splash_rendering = true;
-        disable_autoreload = true;
         focus_on_activate = true;
-        new_window_takes_over_fullscreen = 2;
       };
 
-      windowrulev2 = [
+      windowrule = [
         "float, tag:modal"
         "pin, tag:modal"
         "center, tag:modal"
