@@ -50,6 +50,7 @@
   # Optimize for laptop usage
   boot.kernelParams = [
     # Enable power saving features
+    "consoleblank=180"
     "pcie_aspm=force"
     "i915.enable_fbc=1"
     "i915.enable_psr=1"
