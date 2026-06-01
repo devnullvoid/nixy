@@ -1,4 +1,4 @@
-{ ... }:
+{ lib, ... }:
 {
   programs.dank-material-shell = {
     enable = true;
@@ -8,6 +8,9 @@
     enableDynamicTheming = true;
     enableAudioWavelength = true;
     enableCalendarEvents = true;
-    configHome = "/home/jon";
   };
+
+  # Prevent home-manager from symlinking settings.json to the nix store
+  # so DMS can write to it directly from its settings GUI
+  xdg.configFile."DankMaterialShell/settings.json".enable = lib.mkForce false;
 }
