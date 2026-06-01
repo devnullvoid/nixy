@@ -8,5 +8,6 @@
     enableDynamicTheming = true;
     enableAudioWavelength = true;
     enableCalendarEvents = true;
+    configHome = "/home/jon";
   };
 }
