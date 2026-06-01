@@ -25,7 +25,7 @@ in {
     spawn-at-startup "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
     spawn-at-startup "xwayland-satellite"
     spawn-at-startup "wl-paste" "--watch" "cliphist" "store"
-    spawn-at-startup "swayidle" "-w"
+    spawn-at-startup "swayidle" "-w" "timeout" "180" "niri msg action power-off-monitors" "resume" "niri msg action power-on-monitors"
     spawn-at-startup "copyq" "--start-server"
 
     workspace "home"
