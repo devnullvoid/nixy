@@ -24,6 +24,7 @@ in {
     TTYReset = true;
     TTYVHangup = true;
     TTYVTDisallocate = true;
+    ExecStartPre = "${pkgs.util-linux}/bin/setterm --blank 3 --powerdown 5";
   };
 
   environment.systemPackages = [ pkgs.tuigreet ];
