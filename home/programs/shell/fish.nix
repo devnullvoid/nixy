@@ -116,9 +116,6 @@ in {
         ""}
 
       # Enable vi mode
-      function fish_user_key_bindings
-        fish_vi_key_bindings 2>/dev/null
-      end
       
       # Bind Alt+s to sesh-sessions function
       bind -M insert \es sesh-sessions
