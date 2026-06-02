@@ -381,7 +381,13 @@ in {
         Super+Alt+L { spawn "hyprlock"; }
     }
 
+    include "dms/binds.kdl"
+    include "dms/colors.kdl"
     include "dms/cursor.kdl"
+    include "dms/layout.kdl"
+    include "dms/outputs.kdl"
+    include "dms/wpblur.kdl"
+    include "dms/alttab.kdl"
     include "dms/windowrules.kdl"
   '';
 }
