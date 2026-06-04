@@ -10,7 +10,8 @@
     enableCalendarEvents = true;
   };
 
-  # Prevent home-manager from symlinking settings.json to the nix store
-  # so DMS can write to it directly from its settings GUI
+  # Prevent home-manager from symlinking DMS config files to the nix store
+  # so DMS can write to them directly from its settings GUI
   xdg.configFile."DankMaterialShell/settings.json".enable = lib.mkForce false;
+  xdg.stateFile."DankMaterialShell/session.json".enable = lib.mkForce false;
 }
